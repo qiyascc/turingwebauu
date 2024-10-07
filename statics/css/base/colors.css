@@ -1,0 +1,163 @@
+/* -------------------------------------
+   Colors Styles
+   ------------------------------------- */
+
+@import "_variables.css";
+
+/* Black Colors */
+.black-solid {
+  color: var(--black-solid);
+}
+.black-ultradark {
+  color: var(--black-ultradark);
+}
+.black-dark {
+  color: var(--black-dark);
+}
+.black-medium {
+  color: var(--black-medium);
+}
+.black-light {
+  color: var(--black-light);
+}
+.black-ultralight {
+  color: var(--black-ultralight);
+}
+
+/* White Colors */
+.white-ultradark {
+  color: var(--white-ultradark);
+}
+.white-dark {
+  color: var(--white-dark);
+}
+.white-ultramedium {
+  color: var(--white-ultramedium);
+}
+.white-medium {
+  color: var(--white-medium);
+}
+.white-lightmedium {
+  color: var(--white-lightmedium);
+}
+.white-light {
+  color: var(--white-light);
+}
+.white-ultralight {
+  color: var(--white-ultralight);
+}
+.white-solid {
+  color: var(--white-solid);
+}
+
+/* White with Opacity */
+.white-light-xs {
+  color: var(--white-solid);
+  opacity: var(--opacity-xs);
+}
+.white-light-s {
+  color: var(--white-solid);
+  opacity: var(--opacity-s);
+}
+.white-light-m {
+  color: var(--white-solid);
+  opacity: var(--opacity-m);
+}
+.white-light-l {
+  color: var(--white-solid);
+  opacity: var(--opacity-l);
+}
+.white-light-xl {
+  color: var(--white-solid);
+  opacity: var(--opacity-xl);
+}
+.white-light-xxl {
+  color: var(--white-solid);
+  opacity: var(--opacity-xxl);
+}
+
+/* Blue Colors */
+.blue-ultradark {
+  color: var(--blue-ultradark);
+}
+.blue-dark {
+  color: var(--blue-dark);
+}
+.blue-ultramedium {
+  color: var(--blue-ultramedium);
+}
+.blue-medium {
+  color: var(--blue-medium);
+}
+.blue-lightmedium {
+  color: var(--blue-lightmedium);
+}
+.blue-light {
+  color: var(--blue-light);
+}
+
+/* Blue with Opacity */
+.blue-light-xs {
+  color: var(--blue-light);
+  opacity: var(--opacity-xs);
+}
+.blue-light-s {
+  color: var(--blue-light);
+  opacity: var(--opacity-s);
+}
+.blue-light-m {
+  color: var(--blue-light);
+  opacity: var(--opacity-m);
+}
+.blue-light-l {
+  color: var(--blue-light);
+  opacity: var(--opacity-l);
+}
+.blue-light-xl {
+  color: var(--blue-light);
+  opacity: var(--opacity-xl);
+}
+.blue-light-xxl {
+  color: var(--blue-light);
+  opacity: var(--opacity-xxl);
+}
+
+/* Orange Colors */
+.orange-dark {
+  color: var(--orange-dark);
+}
+.orange-light {
+  color: var(--orange-light);
+}
+
+/* Yellow Colors */
+.yellow-light {
+  color: var(--yellow-light);
+  opacity: var(--opacity-xxl);
+}
+
+/* Purple Colors */
+.purple-light-xs {
+  color: var(--purple-light);
+  opacity: var(--opacity-xs);
+}
+.purple-light-s {
+  color: var(--purple-light);
+  opacity: var(--opacity-s);
+}
+.purple-light-m {
+  color: var(--purple-light);
+  opacity: var(--opacity-m);
+}
+.purple-light-l {
+  color: var(--purple-light);
+  opacity: var(--opacity-l);
+}
+.purple-light-xl {
+  color: var(--purple-light);
+  opacity: var(--opacity-xl);
+}
+.purple-light-xxl {
+  color: var(--purple-light);
+  opacity: var(--opacity-xxl);
+}

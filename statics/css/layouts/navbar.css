@@ -1,0 +1,269 @@
+/* @import url(../components/_buttons.css); */
+
+/* Temel stil ayarları */
+/* .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    } */
+.navigation-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0px;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.cta-btn-nav button {
+    background-color: #ff6f61;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.cta-btn-nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.dropdown img {
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+}
+
+.inner-list {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.inner-list li {
+    margin: 5px 0;
+}
+
+.inner-list a {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown:hover .inner-list {
+    display: block;
+}
+
+.btn-groups .watch-btn {
+    padding: 0;
+    gap: 0;
+    border: 1px solid var(--black-light);
+    background: var(--blue-ultradark);
+    color: var(--white-solid, #fff);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-100);
+    font-weight: var(--font-weight-medium);
+}
+
+.btn-groups .cta-btn {
+    padding: 0;
+}
+
+
+@media (min-width:936px) {
+
+    .navigation-bar .nav-list,
+    .cta-btn-nav button {
+        display: flex;
+        /* justify-content: space-evenly; */
+    }
+
+
+}
+
+@media (min-width:936px) and (max-width:1440px) {
+    .comunnity-video-content {
+        font-size: 100px;
+    }
+
+    .container {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+@media (max-width:996px) {
+    .m-10 {
+        margin: 0;
+    }
+
+    .btn-none {
+        display: none;
+    }
+
+    .comunnity-res-btn {
+        margin-top: 10px;
+        display: block;
+    }
+
+    .comunnity-cards {
+        margin: 0;
+    }
+
+    .comunnity-item {
+        margin: 20px 0;
+        padding: 0;
+    }
+
+    .community-card-padding {
+        padding: 0 34px 0 0;
+    }
+
+    .cta-btn-nav {
+        display: none;
+    }
+
+    .res-cta {
+        display: flex;
+    }
+}
+
+
+@media (max-width:936px) {
+
+    /* !header start */
+    .close-btn-nav {
+        position: relative;
+        z-index: 2;
+    }
+
+    .open-btn-nav {
+        display: flex;
+        z-index: 1;
+    }
+
+    .container {
+        width: 90%;
+        margin: auto;
+    }
+
+    /* inner section */
+    .heading-box .heading-text {
+        font-size: 32px;
+    }
+
+    .wirefame-box video {
+        /* width: 705px; */
+        height: 297px;
+        flex-shrink: 0;
+    }
+
+    .heading-box .content-info {
+        font-size: 12px;
+    }
+
+    .content-box {
+        width: 90%;
+    }
+
+    .turing-icon svg {
+        width: 294px;
+        height: 374px;
+
+        flex-shrink: 0;
+    }
+
+    /* !header end */
+    /* *comunnity */
+    .community-info {
+        font-size: 32px;
+    }
+
+    .video-comunnity video {
+        height: 103px;
+    }
+
+    .comunnity-video-content {
+        font-size: 56px;
+    }
+
+    .comunnity-end-content p {
+        font-size: 14px;
+    }
+
+    .see-all-btn {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .input-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .partnyor-test-box-header img {
+        display: none;
+    }
+
+    .pl-24px {
+        padding: 0;
+    }
+
+    .pr-24px {
+        padding: 0;
+    }
+
+    .gap-20px {
+        gap: 20px;
+
+    }
+
+    /** footer */
+    .logo-text {
+        display: none;
+    }
+
+    .rights-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+    }
+}
+
+
+@media (max-width:1200px) {
+
+    #partnyor-exam,
+    .partnyor-box {
+        height: auto;
+    }
+
+}
+
+@media (max-width:375px) {
+    .comunnity-video-content {
+        font-size: 40px;
+    }
+
+    .content-box {
+        width: 100%;
+    }
+
+}
