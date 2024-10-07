@@ -1,0 +1,107 @@
+/* _variables.css */
+
+
+/* Colors */
+:root {
+    /* Opacity Levels */
+    --opacity-xs: 0.04;
+    --opacity-s: 0.12;
+    --opacity-m: 0.2;
+    --opacity-l: 0.32;
+    --opacity-xl: 0.5;
+    --opacity-xxl: 0.8;
+
+    /* Black Colors */
+    --black-solid: #000000;
+    --black-ultradark: #01030e;
+    --black-dark: #171716;
+    --black-medium: #26262b;
+    --black-light: #4a5567;
+    --black-ultralight: #4e4f57;
+
+    /* White Colors */
+    --white-ultradark: #67686e;
+    --white-dark: #a2a2a2;
+    --white-ultramedium: #b5b6be;
+    --white-medium: #d9d9db;
+    --white-lightmedium: #cdd5e0;
+    --white-light: #edeef0;
+    --white-ultralight: #f8f9fa;
+    --white-solid: #ffffff;
+
+    /* Blue Colors */
+    --blue-ultradark: #080d20;
+    --blue-dark: #0d1224;
+    --blue-ultramedium: #0b1328;
+    --blue-medium: #212b45;
+    --blue-lightmedium: #344054;
+    --blue-light: #2ba6eb;
+
+    /* Orange Colors */
+    --orange-dark: #5c270f;
+    --orange-light: #ff4c00;
+
+    /* Yellow Colors */
+    --yellow-light: #ffbd13;
+
+    /* Purple Colors */
+    --purple-light: #b594ff;
+}
+
+
+/* Fonts */
+:root {
+    --font-primary: 'Inter', sans-serif;
+    --font-secondary: 'Plus Jakarta Sans', sans-serif;
+    --font-tertiary: 'Montserrat', sans-serif;
+
+    --color-primary: #333;
+    --line-height-default: 1.5;
+    
+    /* Font Sizes */
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-xxl: 24px;
+    --font-size-xxxl: 32px;
+    --font-size-xxxxl: 48px;
+    --font-size-xxxxxl: 64px;
+    --font-size-xxxxxxl: 120px;
+    
+    /* Line Heights */
+    --line-height-100: 1.0;
+    --line-height-120: 1.2;
+    --line-height-125: 1.25;
+    --line-height-130: 1.3;
+    --line-height-140: 1.4;
+    --line-height-150: 1.5;
+    
+    /* Font Weights */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+}
+
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../../fonts/Inter-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('../../fonts/PlusJakartaSans-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../fonts/Montserrat-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}

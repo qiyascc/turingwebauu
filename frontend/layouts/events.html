@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link rel="stylesheet" href="../assets/css/layouts/layout.css">
+    <link rel="stylesheet" href="../assets/css/base/export.css">
+    <title>Document</title>
+    <style>
+        #events{
+            background-color: var(--blue-ultradark);
+            position: relative;
+        }
+        #events .shadow-circle-ui{
+            transform: rotate(180deg);
+            position: absolute;
+            left:0px;
+            top: 0px;
+        }
+        #events .shadow-circle-ui-2{
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+        }
+        #events .container{
+            width: 100%;
+            padding: 70px 72px;
+            padding-bottom: 176px;
+            margin: 0%;
+            max-width: none;
+        }
+        #events .container .row .event-card{
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+        .row .event-card .card-header-name{
+            position: relative;
+        }
+        .row .event-card .card-header-name svg{
+            right: -26px;
+            top: 13px;
+            position: absolute;
+        }
+        .row .event-card .card-header-name p{
+            margin-bottom: 16px;
+        }
+        .row .event-card .card-header-name h1{
+            position: relative;
+            z-index: 10;
+        }
+        .see-all-btn{
+            border: 1px solid var(--black-light);
+            height: 48px;
+            width: 145px;
+            padding: 16px 32px;
+            border-radius: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container .row .event-info{
+            margin-bottom: 72px;
+        }
+        .container .row .card-event-info{
+            width: calc(100% - 24px);
+            padding: 16px;
+            border: 1px solid var(--black-light);
+            border-radius: 16px;
+            min-height: 235px;
+            margin-bottom: 24px;
+        }
+        .card-event-info .card-header{
+            margin-bottom: 20px;
+        }
+        .card-event-info .card-header .info-bar{
+            display: inline-flex;
+            padding: 6px 10px;
+            align-items: center;
+            border-radius: 8px;
+            border: 1px solid var(--black-light);
+        }
+
+        .card-main .h1-description{
+            margin-bottom: 12px;
+        }
+
+        .card-main .main-p-ellipsis{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-bottom: 64px;
+        }
+        .card-event-info .card-footer{
+            display: flex;
+            justify-content: space-between;
+        }
+        .card-event-info .card-footer .div-quest{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-wrap: nowrap;
+        }
+        .card-event-info .card-footer .pay-div{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-wrap: nowrap;
+            align-items: flex-end;
+        }
+        @media (min-width:576px) and (max-width:768px){
+            
+            #events .container{
+                padding: 44px 16px;
+            }
+            .event-info .event-card .see-all-btn{
+                display: none;
+            }
+        }
+        @media (max-width:576px){
+            
+            #events .container{
+                padding: 44px 16px;
+            }
+            .event-info .event-card .see-all-btn{
+                display: none;
+            }
+            .event-info .event-card .card-header-name h1{
+                font-size: 32px;
+            }
+            .container .row .card-event-info{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="events">
+            <!-- <div class="shadow-circle-ui">
+                <img src="../assets/images/Blur.png">
+            </div> -->
+            <!-- <div class="shadow-circle-ui-2">
+                <img src="../assets/images/Blur-2.png">
+            </div> -->
+            <!-- <div class="shadow-circle-ui-2">
+                <img src="../assets/images/Blur (2).png">
+            </div> -->
+        </section>
+    </main>
+    <script src="../assets/js/components/events.js"></script>
+</body>
+</html>

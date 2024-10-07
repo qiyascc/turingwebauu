@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/base/export.css">
+    <link rel="stylesheet" href="../assets/css/layouts/ixtisas.css">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="../assets/css/layouts/layout.css">
+    <link rel="stylesheet" href="../assets/css/layouts/navbar.css">
+    <title>Document</title>
+
+    <style>
+        #qualification-info {
+            margin-top: 56px;
+            margin-bottom: 100px;
+        }
+        #qualification-info .qualification-card{
+            height: 446px;
+            padding: 100px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 32px;
+            border: 1px solid var(--white-light);
+            background: var(--blue-ultramedium);
+            backdrop-filter: blur(20px);
+        }
+        .qualification-card .card-info{
+            height: 60%;
+            max-width: 624px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .qualification-card .cta-button{
+            display: flex;
+            height: 48px;
+            padding: 16px 32px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 100px;
+            background: var(--Blue-Light, #2ba6eb);
+            position: relative;
+            z-index: 4;
+        }
+
+        #qualification-info .row {
+            position: relative;
+        }
+
+        #qualification-info .light-circle-ui , .light-circle-ui-2{
+            position: absolute;
+            border-radius: 32px;
+        }
+        #qualification-info .light-circle-ui {
+            top: 0;
+            left: 0;
+        }
+        #qualification-info .light-circle-ui img {
+            border-radius: 32px; 
+        }
+        #qualification-info .light-circle-ui-2{
+            bottom: 0;
+            right: 0;
+        }
+        #qualification-info .light-circle-ui-2 img{
+            border-radius: 32px; 
+        }
+        @media (min-width:576px) and (max-width:768px){
+            #qualification-info{
+                margin-top: 16px;
+            }
+            #qualification-info .qualification-card{
+                height: 274px;
+                padding: 32px;
+            }
+            #qualification-info .light-circle-ui {
+                height: 274px;
+            }
+            #qualification-info .light-circle-ui img{
+                height: 100%;
+            }
+            #qualification-info .light-circle-ui-2{
+                display: none;
+            }
+            .qualification-card .card-info h1{
+                font-size: 36px;
+            }
+            .qualification-card .card-info p{
+                font-size: 16px;
+            }
+        }
+        @media (max-width:576px){
+            #qualification-info{
+                margin-top: 16px;
+                margin-bottom: 44px;
+            }
+            #qualification-info .qualification-card{
+                height: 274px;
+                padding: 32px;
+            }
+            .qualification-card .card-info{
+                height: 65%;
+            }
+            #qualification-info .light-circle-ui {
+                height: 274px;
+            }
+            #qualification-info .light-circle-ui img{
+                height: 100%;
+            }
+            #qualification-info .light-circle-ui-2{
+                display: none;
+            }
+            .qualification-card .card-info h1{
+                font-size: 32px;
+            }
+            .qualification-card .card-info p{
+                font-size: 14px;
+            }
+        }
+
+        #learn-by-doing {
+            margin-bottom: 100px;
+        }
+
+        .syllabus-info h2 {
+            margin: 12px 0px 24px 0px;
+        }
+
+        .syllabus-card .download-btn {
+            display: flex;
+            padding: 12px 16px 12px 24px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 100px;
+            border: 1px solid var(--white-medium);
+        }
+
+        #learn-by-doing .modules-area {
+            padding-left: 103px;
+        }
+
+        #learn-by-doing .fields-container {
+            margin-bottom: 8px;
+        }
+
+        .fields-container .begin-study-container {
+            display: inline-flex;
+            padding: 4px;
+            align-items: center;
+            gap: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--white-medium);
+            background-color: var(--white-solid);
+            padding-right: 12px;
+        }
+
+        .begin-study-container .special {
+            display: flex;
+            height: 36px;
+            padding: 8px 12px;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            border-radius: 6px;
+            border: 1px solid var(--white-medium);
+            background: var(--white-solid);
+        }
+
+        .modules-area .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            flex-wrap: nowrap;
+        }
+
+        .module-card p {
+            margin-left: 24px;
+            display: none;
+        }
+
+        .modules-area .module-card {
+            display: flex;
+            padding: 24px 16px;
+            flex-direction: column;
+            border-radius: 8px;
+            gap: 16px;
+            border: 1px solid var(--white-medium);
+        }
+
+        .modules-area .module-card:hover p {
+            display: flex;
+        }
+
+        .module-card h2 {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        @media (min-width:992px) and (max-width:1200px) {
+            #learn-by-doing .modules-area {
+                padding-left: 50px;
+            }
+        }
+
+        @media (min-width:768px) and (max-width:992px) {
+            #learn-by-doing .modules-area {
+                padding-left: 0px;
+            }
+        }
+
+        @media (min-width:576px) and (max-width:768px) {
+            #learn-by-doing .modules-area {
+                padding-left: 0px;
+            }
+
+            #learn-by-doing .syllabus-card {
+                margin-bottom: 52px;
+            }
+        }
+
+        @media (max-width:576px) {
+            #learn-by-doing {
+                margin-bottom: 44px;
+            }
+
+            #learn-by-doing .modules-area {
+                padding-left: 0px;
+            }
+
+            #learn-by-doing .syllabus-card {
+                margin-bottom: 52px;
+            }
+
+            .syllabus-card .download-btn {
+                width: 100%;
+            }
+        }
+
+
+        #faq{
+           margin-bottom: 100px;
+        }
+
+        #faq .syllabus-info h2{
+            margin: 0%;
+            margin-bottom: 12px;
+        }
+        #faq .modules-area{
+            padding-left: 103px;
+        }
+        #faq .fields-container {
+            margin-bottom: 24px;
+        }
+        #faq .fields-container .begin-study-container {
+            display: inline-flex;
+            padding: 4px;
+            align-items: center;
+            gap: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--white-medium);
+            background-color: var(--white-solid);
+            padding-right: 12px;
+        }
+        #faq .begin-study-container .special {
+            display: flex;
+            height: 36px;
+            padding:8px 12px;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            border-radius:  6px;
+            border: 1px solid var(--white-medium);
+            background: var(--white-solid);
+        }
+        #faq .modules-area .moduls-list{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            flex-wrap: nowrap;
+        }
+        #faq .module-card p{
+            margin-left: 24px;
+            display: none;
+        }
+        #faq .modules-area .module-card{
+            display: flex;
+            padding: 24px 16px;
+            flex-direction: column;
+            border-radius: 8px;
+            gap: 16px;
+            border: 1px solid var(--white-medium);
+        }
+        #faq .modules-area .module-card:hover p{
+            display: flex;
+        }
+        #faq .module-card h2{
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        @media (min-width:992px) and (max-width:1200px){
+            #faq .modules-area {
+                padding-left: 50px;
+            }
+        }
+        @media (min-width:768px) and (max-width:992px){
+            #faq .modules-area {
+                padding-left: 0px;
+            }
+        }
+        @media (min-width:576px) and (max-width:768px) {
+            #faq .modules-area {
+                padding-left: 0px;
+            }
+            #faq .syllabus-card{
+                margin-bottom: 52px;
+            }
+        }
+        @media (max-width:576px){
+            #faq{
+                margin-bottom: 44px;
+            }
+            #faq .modules-area {
+                padding-left: 0px;
+            }
+            #faq .syllabus-card{
+                margin-bottom: 52px;
+            }
+            #faq .syllabus-card .download-btn{
+                width: 100%;
+            }
+        }
+
+
+        #instructors{
+            margin-bottom: 100px;
+        }
+        #instructors .section-info{
+            max-width: 558px;
+            margin-bottom: 48px;
+        }
+        #instructors .section-info h2{
+            margin-top: 12px;
+        }
+        #instructors .instructor-card{
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            border-radius: 16px;
+            gap: 20px;
+            border: 1px solid var(--white-medium);
+            background: var(--white-solid);
+            margin:0 24px 24px 0;
+        }
+        
+        .instructor-card .card-header img{
+            height: 100%;
+            width: 100%;
+        }
+        #instructors .instructor-card .card-info{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .card-info .instructor-name h2{
+            margin-bottom: 6px;
+        }
+        .instructor-card .card-info .linkedin-btn{
+            width: 32px;
+            height: 32px;
+            border-radius: 100px;
+            border: 1px solid var(--white-medium);
+        }
+        .card-info .linkedin-btn a{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+        @media (min-width:576px) and (max-width:768px){
+            #instructors .section-info{
+                margin-bottom: 24px;
+            }
+        }
+        @media (max-width:576px){
+            #instructors{
+                margin-bottom: 44px;
+            }
+            #instructors .section-info{
+                margin-bottom: 24px;
+            }
+            #instructors .instructor-card{
+                margin-right: 0;
+            }
+        }
+
+        /*  honoring */
+        #honoring{
+            margin-bottom: 100px;
+        }
+        .container .honoring-header {
+            max-width: 561px;
+            margin-bottom: 48px;
+        }
+
+        .honoring-header .honoring-main-heading {
+            color: var(--Black-Medium, #26262B);
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-xxxxl);
+            line-height: var(--line-height-120);
+            font-weight: var(--font-weight-medium);
+            margin-top: 12px;
+
+        }
+
+        .honoring-header .honoring-main-heading .turing-career {
+            color: var(--Blue-Light, #2BA6EB);
+
+            /* Plus Jakarta Sans/Style-48/120%/Medium */
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-xxxxl);
+            line-height: var(--line-height-120);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .honoring-card-box {
+            height: 100%;
+            display: flex;
+            padding: 6%;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            border-radius: 16px;
+            border: 1px solid var(--white-medium, #D9D9DB);
+            background: var(--white-solid, #FFF);
+        }
+
+        .honoring-card-box .honoring-card-box-video {
+            position: relative;
+            min-height: 392px;
+            margin-bottom: 20px;
+        }
+        .honoring-card-box-video video{
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .honoring-card-box .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+        .honoring-card-content{
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: end;
+        }
+        .honoring-card-info{
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-right: auto;
+        }
+        .honoring-card-content .link-btn{
+            width: 32px;
+            height: 32px;
+            border-radius: 100px;
+            border: 1px solid var(--white-medium);
+        }
+        .honoring-card-content .link-btn a{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+        #honoring .p-right-24px {
+            padding-right: 24px;
+            padding-bottom: 16px;
+        }
+        .btn-left-m{
+            margin-left: 4px;
+        }
+        
+        @media (max-width:576px){
+            #honoring{
+                margin-bottom: 44px;
+            }
+            #honoring .p-right-24px{
+                padding-right: 0;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="navigation-bar">
+
+                <div class="logo">
+                    <img src="../assets/images/turing-logo-color (1).png" alt="">
+                </div>
+                <ul class="nav-list">
+                    <li><a class="nav-item" href="">Academy</a></li>
+                    <li class="dropdown"><a class="nav-item " href="">Fields of Study</a> <img
+                            src="../assets/images/cheveron-down.png" alt=""> </li>
+                    <li><a class="nav-item" href="">Events</a></li>
+                    <li><a class="nav-item" href="">Scholarship Program</a></li>
+                </ul>
+                <div class="cta-btn-nav">
+                    <button><a href="">Apply now</a></button>
+                </div>
+
+                <div class="open-btn-nav">
+                    <img src="../assets/images/menu.png" alt="">
+                </div>
+            </nav>
+            <!-- !res-menu -->
+            <div class="responsive-menu">
+                <div class="logo-close-container">
+                    <img src="../assets/images/turing-logo-color.png" alt="">
+                    <div class="close-btn-nav"><img src="../assets/images/add.png" alt=""></div>
+                </div>
+                <ul class="res-navbar">
+                    <li><a class="nav-item" href="#">Academy</a></li>
+                    <li><a class="nav-item" href="#">Fields of Study</a></li>
+                    <li><a class="nav-item" href="#">Events</a></li>
+                    <li><a class="nav-item" href="#">Scholarship Program</a></li>
+
+                </ul>
+                <div class="res-cta">
+                    <button><a href="">Apply now</a></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="qualification-info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="qualification-card">
+                            <div class="card-info">
+                                <h1 class="inter-style-64-125-semibold white-solid">UX/UI Dizayn</h1>
+                                <p class="inter-style-18-150-regular white-solid">You will learn how to transform houses and apartments, create drawings and 3D visualization. You can take high-paying orders or open a design studio</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="cta-button">
+                                    <a href="#" class="inter-style-16-100-medium  white-light">Apply now</a>
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="light-circle-ui">
+                        <img src="../assets/images/light-blur-1.png">
+                    </div>
+                    <div class="light-circle-ui-2">
+                        <img src="../assets/images/light-blur-2.png">
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="learn-by-doing">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="syllabus-card">
+                            <div class="syllabus-info">
+                                <p class="inter-style-14-100-medium-up black-solid">Syllabus</p>
+                                <h2 class="plusjakarta-style-48-120-medium black-dark">Learn by doing</h2>
+                            </div>
+                            <button class="download-btn">Download Syllabus
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none">
+                                    <path
+                                        d="M17.5 12.5V15.8333C17.5 16.2754 17.3244 16.6993 17.0118 17.0118C16.6993 17.3244 16.2754 17.5 15.8333 17.5H4.16667C3.72464 17.5 3.30072 17.3244 2.98816 17.0118C2.67559 16.6993 2.5 16.2754 2.5 15.8333V12.5"
+                                        stroke="#171716" stroke-width="1.25" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M5.83398 8.33331L10.0007 12.5L14.1673 8.33331" stroke="#171716"
+                                        stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M10 12.5V2.5" stroke="#171716" stroke-width="1.25" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <div class="modules-area">
+                            <faq-list
+                                style-config="--module-card-background: #fff; --module-card-border: 1px solid #ddd; --header-icon: url('../assets/images/Plus-Icon.png');"
+                                button-style-config="background-color: #007bff; color: white; padding: 0.5rem 1rem; border-radius: 4px;"
+                                modules='{
+                                    "Fundamentals": [
+                                        {"question": "What is UX Design?", "answer": "UX Design focuses on the overall feel of the experience."},
+                                        {"question": "What is Interaction Design?", "answer": "Interaction Design is about how users interact with a product."}
+                                    ],
+                                    "Specialization": [
+                                        {"question": "What are Advanced UX Strategies?", "answer": "Advanced UX Strategies involve complex methodologies and practices."},
+                                        {"question": "What are the latest UI Techniques?", "answer": "Latest UI Techniques include trends in visual and interaction design."}
+                                    ]
+                            }'></faq-list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="instructors">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-info">
+                            <p class="inter-style-14-100-medium-up black-dark">İnstructors</p>
+                            <h2 class="plusjakarta-style-48-120-medium black-dark">Guiding Future Lights: Our Instructors </h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <card-component 
+                        media-type="img"
+                        src="../assets/images/Instructors-img.png"
+                       
+                        title="Lətif Kərim"
+                        description="Designer at SAFAROFF"
+                        linkedin-url="https://www.linkedin.com/in/your-profile"
+                        style-config='{
+                            "background": "#fff",
+                            "border": "1px solid #D9D9DB",
+                            "padding": "6%",
+                            "borderRadius": "16px"
+                        }'>
+                    </card-component>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <card-component 
+                        media-type="img"
+                        src="../assets/images/Instructors-img.png"
+                       
+                        title="Lətif Kərim"
+                        description="Designer at SAFAROFF"
+                        linkedin-url="https://www.linkedin.com/in/your-profile"
+                        style-config='{
+                            "background": "#fff",
+                            "border": "1px solid #D9D9DB",
+                            "padding": "6%",
+                            "borderRadius": "16px"
+                        }'>
+                    </card-component>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <!-- <div class="instructor-card">
+                            <div class="card-header">
+                                <img src="../assets/images/Instructors-img.png" alt="Instructor Photo">
+                            </div>
+                            <div class="card-info">
+                                <div class="instructor-name">
+                                    <h2 class="inter-style-18-125-medium black-dark">Lətif Kərim</h2>
+                                    <p class="inter-style-12-150-regular black-dark">Designer at SAFAROFF</p>
+                                </div>
+                                <button class="linkedin-btn">
+                                    <a href="#">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g id="Linkedin">
+                                            <path id="&#239;&#131;&#161;" d="M3.69141 14H0.785156V4.65628H3.69141V14ZM2.22266 3.40628C1.31641 3.40628 0.566406 2.62503 0.566406 1.68753C0.566406 0.406278 1.94141 -0.406222 3.06641 0.250028C3.59766 0.531278 3.91016 1.09378 3.91016 1.68753C3.91016 2.62503 3.16016 3.40628 2.22266 3.40628ZM14.5352 14H11.6602V9.46878C11.6602 8.37503 11.6289 7.00003 10.1289 7.00003C8.62891 7.00003 8.41016 8.15628 8.41016 9.37503V14H5.50391V4.65628H8.28516V5.93753H8.31641C8.72266 5.21878 9.66016 4.43753 11.0664 4.43753C14.0039 4.43753 14.5664 6.37503 14.5664 8.87503V14H14.5352Z" fill="#344054"/>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </button>
+                            </div>
+                        </div> -->
+                
+                
+                        <card-component 
+                        media-type="img"
+                        src="../assets/images/Instructors-img.png"
+                       
+                        title="Lətif Kərim"
+                        description="Designer at SAFAROFF"
+                        linkedin-url="https://www.linkedin.com/in/your-profile"
+                        style-config='{
+                            "background": "#fff",
+                            "border": "1px solid #D9D9DB",
+                            "padding": "6%",
+                            "borderRadius": "16px"
+                        }'>
+                    </card-component>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="honoring">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="honoring-header">
+                            <p class="inter-style-14-100-medium-up  white-dark">Our graduates</p>
+                            <p class="honoring-main-heading">Honoring Our Graduates in <span class="turing-career">Turing Academy</span></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 p-right-24px">
+                        <card-component 
+media-type="video"
+src="https://www.w3schools.com/html/mov_bbb.mp4"
+media-style='{"min-height":"382px"}'
+title="Vüsal Ataşov"
+description="Back-End Developer at ABB"
+behance-url="https://www.behance.net/your-profile"
+linkedin-url="https://www.linkedin.com/in/your-profile" 
+icon="https://media.istockphoto.com/id/1388414773/vector/play-button.jpg?s=612x612&w=0&k=20&c=qXvGW4mRXJe4zJOXi3g0Onzsxq28iu96IHyKFYyfI8s="
+
+style-config='{
+    "background": "#fff",
+    "border": "1px solid #D9D9DB",
+    "padding": "6%",
+    "borderRadius": "16px",
+   
+}'>
+</card-component>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 p-right-24px">
+                        <card-component 
+                        media-type="video"
+                        src="https://www.w3schools.com/html/mov_bbb.mp4"
+                        media-style='{"min-height":"382px"}'
+                        title="Vüsal Ataşov"
+                        description="Back-End Developer at ABB"
+                        behance-url="https://www.behance.net/your-profile"
+                        linkedin-url="https://www.linkedin.com/in/your-profile" 
+                        icon="https://media.istockphoto.com/id/1388414773/vector/play-button.jpg?s=612x612&w=0&k=20&c=qXvGW4mRXJe4zJOXi3g0Onzsxq28iu96IHyKFYyfI8s="
+                        
+                        style-config='{
+                            "background": "#fff",
+                            "border": "1px solid #D9D9DB",
+                            "padding": "6%",
+                            "borderRadius": "16px",
+                           
+                        }'>
+                        </card-component>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 p-right-24px">
+                        <card-component 
+                        media-type="video"
+                        src="https://www.w3schools.com/html/mov_bbb.mp4"
+                        media-style='{"min-height":"382px"}'
+                        title="Vüsal Ataşov"
+                        description="Back-End Developer at ABB"
+                        behance-url="https://www.behance.net/your-profile"
+                        linkedin-url="https://www.linkedin.com/in/your-profile" 
+                        icon="https://media.istockphoto.com/id/1388414773/vector/play-button.jpg?s=612x612&w=0&k=20&c=qXvGW4mRXJe4zJOXi3g0Onzsxq28iu96IHyKFYyfI8s="
+                        
+                        style-config='{
+                            "background": "#fff",
+                            "border": "1px solid #D9D9DB",
+                            "padding": "6%",
+                            "borderRadius": "16px",
+                           
+                        }'>
+                        </card-component>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 p-right-24px">
+                        <!-- <div class="honoring-card-box ">
+                            <div class="honoring-card-box-video">
+                                <video src="https://www.w3schools.com/html/mov_bbb.mp4" controls autoplay muted 
+                                poster="../assets/images/Rectangle 43 (1).png">
+                                Your browser does not support the video tag.
+                            </video>
+                                <div class="play-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"
+                                        fill="none">
+                                        <path d="M48 31.5L23 15.5V49L48 31.5Z" fill="white" fill-opacity="0.2" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M5.33398 32C5.33398 17.2724 17.2731 5.33334 32.0007 5.33334C39.0731 5.33334 45.8559 8.14286 50.8569 13.1438C55.8578 18.1448 58.6673 24.9276 58.6673 32C58.6673 46.7276 46.7283 58.6667 32.0007 58.6667C17.2731 58.6667 5.33398 46.7276 5.33398 32ZM27.1208 43.4134L42.6674 33.7067C43.2492 33.3341 43.6011 32.6909 43.6011 32C43.6011 31.3092 43.2492 30.6659 42.6674 30.2934L27.0674 20.5867C26.453 20.1993 25.6768 20.1755 25.0398 20.5244C24.4028 20.8734 24.005 21.5403 24.0008 22.2667V41.7334C23.9922 42.4774 24.3973 43.1647 25.0524 43.5174C25.7075 43.8702 26.5043 43.8301 27.1208 43.4134Z"
+                                            fill="white" fill-opacity="0.8" />
+                                        <path
+                                            d="M42.9322 34.1308L42.937 34.1278C43.6623 33.6632 44.1011 32.8614 44.1011 32C44.1011 31.1388 43.6624 30.3367 42.937 29.8723L42.9315 29.8689L27.3341 20.1638C27.3336 20.1634 27.3331 20.1631 27.3326 20.1628C26.5648 19.6795 25.5953 19.65 24.7996 20.0859C24.0034 20.5221 23.506 21.3558 23.5008 22.2638V22.2667V41.7308C23.4912 42.6595 23.9973 43.5172 24.8153 43.9576C25.6314 44.3971 26.6234 44.3488 27.3928 43.833L42.9322 34.1308ZM5.83398 32C5.83398 17.5485 17.5492 5.83334 32.0007 5.83334C38.9405 5.83334 45.5961 8.59018 50.5033 13.4974C55.4104 18.4046 58.1673 25.0602 58.1673 32C58.1673 46.4515 46.4521 58.1667 32.0007 58.1667C17.5492 58.1667 5.83398 46.4515 5.83398 32Z"
+                                            stroke="url(#paint0_linear_976_695)" stroke-opacity="0.2" />
+                                        <defs>
+                                            <linearGradient id="paint0_linear_976_695" x1="32.0006" y1="5.33334"
+                                                x2="32.0006" y2="58.6667" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#F4F4F5" />
+                                                <stop offset="1" stop-color="#F4F4F5" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="honoring-card-content">
+                                <div class="honoring-card-info">
+                                    <p class="graduete-name inter-style-18-125-medium  black-ultradark">Emil Dost</p>
+                                    <p class="inter-style-12-150-regular black-ultralight">Product Designer at DOST</p>
+                                </div>
+                                <button class="link-btn">
+                                    <a href="#">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M6.55251 7.51514C7.3749 7.12205 7.80419 6.52724 7.80419 5.60142C7.80419 3.77562 6.4439 3.33081 4.87413 3.33081H0.552734V12.496H4.99567C6.66113 12.496 8.22573 11.6969 8.22573 9.83488C8.22573 8.68406 7.68006 7.83323 6.55251 7.51514ZM2.56731 4.89541H4.45776C5.18446 4.89541 5.83875 5.09971 5.83875 5.94278C5.83875 6.7212 5.32928 7.03412 4.61034 7.03412H2.56731V4.89541ZM4.72155 10.9391H2.56731V8.41511H4.76292C5.64996 8.41511 6.21115 8.78492 6.21115 9.72368C6.21115 10.6495 5.54134 10.9391 4.72155 10.9391ZM13.9928 4.71438H10.2765V3.81183H13.9928V4.71438ZM15.4487 9.27369C15.4487 7.31084 14.3005 5.67383 12.2187 5.67383C10.1963 5.67383 8.82312 7.19446 8.82312 9.18577C8.82312 11.2521 10.1239 12.6693 12.2187 12.6693C13.804 12.6693 14.8307 11.9555 15.3246 10.4374H13.716C13.5428 11.0038 12.829 11.3038 12.2756 11.3038C11.2075 11.3038 10.6463 10.678 10.6463 9.61506H15.4332C15.441 9.50644 15.4487 9.39007 15.4487 9.27369ZM10.6489 8.46683C10.7084 7.59531 11.2877 7.04964 12.1618 7.04964C13.0773 7.04964 13.5376 7.58755 13.6152 8.46683H10.6489Z" fill="#344054"/>
+                                        </svg>
+                                    </a>
+                                </button>
+                                <button class="link-btn btn-left-m">
+                                    <a href="#">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g id="Linkedin">
+                                            <path id="&#239;&#131;&#161;" d="M3.69141 14H0.785156V4.65628H3.69141V14ZM2.22266 3.40628C1.31641 3.40628 0.566406 2.62503 0.566406 1.68753C0.566406 0.406278 1.94141 -0.406222 3.06641 0.250028C3.59766 0.531278 3.91016 1.09378 3.91016 1.68753C3.91016 2.62503 3.16016 3.40628 2.22266 3.40628ZM14.5352 14H11.6602V9.46878C11.6602 8.37503 11.6289 7.00003 10.1289 7.00003C8.62891 7.00003 8.41016 8.15628 8.41016 9.37503V14H5.50391V4.65628H8.28516V5.93753H8.31641C8.72266 5.21878 9.66016 4.43753 11.0664 4.43753C14.0039 4.43753 14.5664 6.37503 14.5664 8.87503V14H14.5352Z" fill="#344054"/>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </button>
+                            </div>
+                        </div> -->
+                   
+                        <card-component 
+                        media-type="video"
+                        src="https://www.w3schools.com/html/mov_bbb.mp4"
+                        media-style='{"min-height":"382px"}'
+                        title="Vüsal Ataşov"
+                        description="Back-End Developer at ABB"
+                        behance-url="https://www.behance.net/your-profile"
+                        linkedin-url="https://www.linkedin.com/in/your-profile" 
+                        icon="https://media.istockphoto.com/id/1388414773/vector/play-button.jpg?s=612x612&w=0&k=20&c=qXvGW4mRXJe4zJOXi3g0Onzsxq28iu96IHyKFYyfI8s="
+                        
+                        style-config='{
+                            "background": "#fff",
+                            "border": "1px solid #D9D9DB",
+                            "padding": "6%",
+                            "borderRadius": "16px",
+                           
+                        }'>
+                        </card-component>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="syllabus-card">
+                            <div class="syllabus-info">
+                                <h2 class="plusjakarta-style-48-120-medium black-dark">FAQ</h2>
+                                <p class="inter-style-14-150-regular black-light">We're here to support your design journey.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <div class="modules-area">
+                            <faq-list
+                                    style-config="--module-card-background: #fff; --module-card-border: 1px solid #ddd; --header-icon: url('../assets/images/Plus-Icon.png');"
+                                    button-style-config="background-color: #007bff; color: white; padding: 0.5rem 1rem; border-radius: 4px;"
+                                    modules='{
+                                "general": [
+                                    {"question": "What is UX Design?", "answer": "UX Design focuses on the overall feel of the experience."},
+                                    {"question": "What is Interaction Design?", "answer": "Interaction Design is about how users interact with a product."},
+                                    {"question": "What are Advanced UX Strategies?", "answer": "Advanced UX Strategies involve complex methodologies and practices."},
+                                    {"question": "What are the latest UI Techniques?", "answer": "Latest UI Techniques include trends in visual and interaction design."}
+                                ]
+                            }'></faq-list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+
+    <script src="../assets/js/components/navbar.js"></script>
+    <script src="../assets/js/components/cardComponent.js"></script>
+    <script src="../assets/js/components/faqComponent.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* margin: 30px 0; */
+  height: 10vh;
+}
+
+.slider {
+  display: flex;
+  width: 100%; /* 4 şəkil olduğu üçün 100% * 4 = 400% */
+  animation: slide 10s infinite linear;
+}
+
+.slider img {
+  /* width: 50px; */
+  height: auto;
+  flex: 1 0 50px;
+  height: 50px;
+  background-color: black;
+  margin: 0 50px;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(-400%);
+  }
+}

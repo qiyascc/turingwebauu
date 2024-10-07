@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link rel="stylesheet" href="../assets/css/layouts/layout.css">
+    <link rel="stylesheet" href="../assets/css/base/export.css">
+    <title>Document</title>
+
+    <style>
+
+        #skillup .container {
+            width: 100%;
+            margin: 0%;
+            max-width: none;
+            padding:100px 72px;
+        }
+
+        #skillup .container .skillup-area{
+            display: flex;
+            flex-direction: column;
+            max-width: 220px;
+        }
+        .skillup-area .skillup-header{
+            margin-bottom: 12px;
+        }
+        .skillup-area .skillup-main {
+            position: relative;
+        }
+        .skillup-area .skillup-main .vector{
+            position: absolute;
+            right: -51px;
+            top: 87px;
+        }
+        .skillup-footer .see-all-btn{
+            border: 1px solid var(--black-light);
+            height: 48px;
+            width: 145px;
+            padding: 16px 32px;
+            border-radius: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .service-card{
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid var(--white-medium);
+            background: var(--white-solid, #FFF);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 32px;
+        }
+        .service-card-header .logo-span{
+            display: inline-flex;
+            padding: 12px;
+            background-color: var(--white-ultralight);
+            border-radius: 100px;
+            border: 1px solid var(--white-medium);    
+        }
+        .service-card .service-card-info h1{
+            margin-bottom: 8px;
+        }
+        .learn-more-btn{
+            width: 130px;
+            height: 38px;
+            padding: 12px 16px;
+            border: 1px solid var(--white-medium);
+            border-radius: 100px;
+            background-color: var(--white-solid);
+            box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #skillup .container .p-10px{
+            padding-right: 24px;
+        }
+        @media (min-width:576px) and (max-width:768px){
+            #skillup .container{
+                padding: 44px 16px;
+            }
+            #skillup .container .p-10px{
+                padding-right: 0;
+                margin-top:24px;
+            }
+            .skillup-footer .see-all-btn{
+                display: none;
+            }
+            #skillup .container .skillup-area{
+                margin-bottom: 48px;
+            }
+        }
+        @media (max-width:576px){
+            #skillup .container{
+                padding: 44px 16px;
+            }
+            #skillup .container .p-10px{
+                padding-right: 0;
+                margin-top:24px;
+            }
+            .skillup-footer .see-all-btn{
+                display: none;
+            }
+            #skillup .container .skillup-area{
+                margin-bottom: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+
+        <section id="skillup">
+           <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    <div class="skillup-area">
+                        <div class="skillup-header">
+                            <p class="inter-style-14-100-medium-up white-ultradark">
+                                Mutual Choice
+                            </p>
+                        </div>
+                        <div class="skillup-main">
+                            <h1 class="plusjakarta-style-48-125-semibold">
+                                Skill up, stand out
+                            </h1>
+                            <div class="vector">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="168" height="57" viewBox="0 0 168 57" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M143.718 0.395082C125.681 4.24821 131.229 7.84255 141.182 5.19712C157.602 0.826406 167.398 7.58376 162.579 20.0058C159.156 28.8047 142.704 39.2427 125.808 43.3259C108.183 47.5816 77.4036 47.8691 56.7041 43.7859C54.707 43.3834 36.163 40.2203 32.9297 39.6165C19.3941 37.0573 12.0399 36.7123 6.77781 38.4951C-0.322795 40.9105 -2.38325 50.572 3.19581 55.2878C5.66834 57.3869 6.23893 57.0419 4.71737 54.4252C-1.52736 43.6709 11.9765 38.035 33.2467 42.5207C43.9927 44.7924 52.2662 45.8563 58.0354 47.064C109.768 57.9045 168.127 41.6006 168 16.1814C167.968 6.6061 154.781 -1.9628 143.718 0.395082Z" fill="#FF4C00"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="skillup-footer">
+                            <button class="see-all-btn inter-style-16-150-regular black-light">
+                                <a href="#">
+                                    See all
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 p-10px">
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="logo-span">
+                                <img src="../assets/images/Frame.png" alt="logo">
+                            </span>
+                        </div>
+                        <div class="service-card-info">
+                            <h1 class="inter-style-20-100-medium black-ultradark">Design</h1>
+                            <p class="inter-style-14-150-regular black-ultralight">Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit Korem ipsum dolor sit amet</p>
+                        </div>
+                        <div class="service-card-action">
+                            <button class="learn-more-btn inter-style-14-100-semibold blue-lightmedium">
+                                Learn more
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="12" viewBox="0 0 11 12" fill="none">
+                                    <path d="M9.57129 1.71436L1.47555 10.0601" stroke="#344054" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M0.999861 1.71411L9.57129 1.71411L9.57129 10.2855" stroke="#344054" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 p-10px">
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <span class="logo-span">
+                                <img src="../assets/images/Frame.png" alt="logo">
+                            </span>
+                        </div>
+                        <div class="service-card-info">
+                            <h1 class="inter-style-20-100-medium black-ultradark">Design</h1>
+                            <p class="inter-style-14-150-regular black-ultralight">Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit Korem ipsum dolor sit amet</p>
+                        </div>
+                        <div class="service-card-action">
+                            <button class="learn-more-btn inter-style-14-100-semibold blue-lightmedium">
+                                Learn more
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="12" viewBox="0 0 11 12" fill="none">
+                                    <path d="M9.57129 1.71436L1.47555 10.0601" stroke="#344054" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M0.999861 1.71411L9.57129 1.71411L9.57129 10.2855" stroke="#344054" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+        </section>
+
+    </main>
+    <script src="../assets/js/components/skillup.js"></script>
+</body>
+</html>

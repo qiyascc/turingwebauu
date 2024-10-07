@@ -1,0 +1,186 @@
+@import '../base/colors.css';
+
+:root {
+    /*for all buttons*/
+    --btn-display: flex;
+    --btn-justify-content-center: center;
+    --btn-justify-content-sb: space-between;
+    --btn-align-items: center;
+    --btn-background-color: transparent;
+
+    --cta-btn-height: 48px;
+    --cta-btn-width: 145px;
+    --cta-btn-padding: 16px 32px;
+    --cta-btn-border: none;
+    --cta-btn-border-radius: 100px;
+    --cta-btn-background-color: var(--blue-light);
+
+    --cta-btn-2-height: 48px;
+    --cta-btn-2-width: 145px;
+    --cta-btn-2-padding: 16px 32px;
+    --cta-btn-2-border: none;
+    --cta-btn-2-border-radius: 100px;
+    --cta-btn-2-background-color: var(--blue-ultramedium);
+
+    --watch-btn-height: 56px;
+    --watch-btn-width: 169px;
+    --watch-btn-padding: 16px 24px 16px 16px;
+    --watch-btn-background-color: var(--blue-ultramedium);
+    --watch-btn-border: 1px solid var(--black-light);
+    --Watch-btn-border-radius: 100px;
+
+    --see-all-btn-height: 48px;
+    --see-all-btn-width: 145px;
+    --see-all-btn-padding: 16px 32px;
+    --see-all-btn-border: 1px solid var(--black-solid);
+    --see-all-btn-border-radius: 100px;
+
+    --learn-more-btn-width: 130px;
+    --learn-more-btn-heightt: 38px;
+    --learn-more-btn-padding: 12px 16px;
+    --learn-more-btn-border: 1px solid var(--white-medium);
+    --learn-more-btn-border-radius: 100px;
+    --learn-more-btn-background-color: var(--white-solid);
+    --learn-more-btn-box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+
+    --see-all-btn-white-border: 1px solid var(--black-light);
+    --see-all-btn-white-height: 48px;
+    --see-all-btn-white-width: 145px;
+    --see-all-btn-white-padding: 16px 32px;
+    --see-all-btn-white-border-radius: 100px;
+
+    --explore-us-btn-height:48px;
+    --explore-us-btn-width:145px;
+    --explore-us-btn-padding:16px 24px;
+    --explore-us-btn-border:1px solid var(--black-light);
+    --explore-us-btn-border-radius:100px;
+
+    --test-btn-height:48px;
+    --test-btn-width:145px;
+    --test-btn-padding:16px 32px;
+    --test-btn-border:1px solid var(--black-light);
+    --test-btn-border-radius:100px;
+    --test-btn-background-color:var(--btn-background-color);
+
+    --learn-more-card-btn-height:46px;
+    --learn-more-card-btn-width:130px;
+    --learn-more-card-btn-padding:16px;
+    --learn-more-card-btn-border:1px solid var(--white-medium);
+    --learn-more-card-btn-border-radius:100px;
+
+    --cta-btn-card-height:46px;
+    --cta-btn-card-width:130px;
+    --cta-btn-card-padding:16px;
+    --cta-btn-card-border:none;
+    --cta-btn-card-border-radius:100px;
+    --cta-btn-card-background-color:var(--blue-light);
+}
+
+.cta-button {
+    height: var(--cta-btn-height);
+    width: var(--cta-btn-width);
+    padding: var(--cta-btn-padding);
+    border: var(--cta-btn-border);
+    border-radius: var(--cta-btn-border-radius);
+    background-color: var(--cta-btn-background-color);
+}
+
+.watch-btn {
+    height: var(--watch-btn-height);
+    width: var(--watch-btn-width);
+    padding: var(--watch-btn-padding);
+    border: var(--watch-btn-border);
+    border-radius: var(--Watch-btn-border-radius);
+    background-color: var(--watch-btn-background-color);
+    display: var(--btn-display);
+    justify-content: var(--btn-justify-content-sb);
+    align-items: var(--btn-align-items);
+}
+
+.see-all-btn {
+    width: var(--see-all-btn-width);
+    height: var(--see-all-btn-height);
+    padding: var(--see-all-btn-padding);
+    border: var(--see-all-btn-border);
+    border-radius: var(--see-all-btn-border-radius);
+    display: var(--btn-display);
+    justify-content: var(--btn-justify-content-center);
+    align-items: var(--btn-align-items);
+    background-color: var(--btn-background-color);
+}
+
+.learn-more-btn {
+    width: var(--learn-more-btn-width);
+    height: var(--learn-more-btn-height);
+    padding: var(--learn-more-btn-padding);
+    border: var(--learn-more-btn-border);
+    border-radius: var(--learn-more-btn-border-radius);
+    display: var(--btn-display);
+    justify-content: var(--btn-justify-content-sb);
+    align-items: var(--btn-align-items);
+    background-color: var(--learn-more-btn-background-color);
+    box-shadow: var(--learn-more-btn-box-shadow);
+}
+.see-all-btn-white {
+    width: var(--see-all-btn-white-width);
+    height: var(--see-all-btn-white-height);
+    padding: var(--see-all-btn-white-padding);
+    border: var(--see-all-btn-white-border);
+    border-radius: var(--see-all-btn-border-white-radius);
+    display: var(--btn-display);
+    justify-content: var(--btn-justify-content-center);
+    align-items: var(--btn-align-items);
+    background-color: var(--btn-background-color);
+}
+.explore-us-btn{
+    width: var(--explore-us-btn-width);
+    height: var(--explore-us-btn-height);
+    padding: var(--explore-us-btn-padding);
+    border: var(--explore-us-btn-border);
+    border-radius: var(--explore-us-btn-border-radius);
+    display: var(--btn-display);
+    justify-content: var(--btn-justify-content-center);
+    align-items: var(--btn-align-items);
+    background-color: var(--btn-background-color);
+}
+.cta-button-2{
+    height: var(--cta-btn-2-height);
+    width: var(--cta-btn-2-width);
+    padding: var(--cta-btn-2-padding);
+    border: var(--cta-btn-2-border);
+    border-radius: var(--cta-btn-2-border-radius);
+    background-color: var(--cta-btn-2-background-color);
+}
+.test-btn{
+    height: var(--test-btn-height);
+    width: var(--test-btn-width);
+    padding: var(--test-btn-padding);
+    border: var(--test-btn-border);
+    border-radius: var(--test-btn-border-radius);
+    background-color: var(--test-btn-background-color);
+    display: var(--btn-display);
+    justify-content: var(--btn-justify-content-center);
+    align-items: var(--btn-align-items);
+}
+.learn-more-card-btn{
+    height: var(--learn-more-card-btn-height);
+    width: var(--learn-more-card-btn-width);
+    padding: var(--learn-more-card-btn-padding);
+    border: var(--learn-more-card-btn-border);
+    border-radius: var(--learn-more-card-btn-border-radius);
+    background-color: var(--btn-background-color);
+    display: var(--btn-display);
+    justify-content: var(--btn-justify-content-center);
+    align-items: var(--btn-align-items);
+}
+.cta-button-card{
+    height: var(--cta-btn-card-height);
+    width: var(--cta-btn-card-width);
+    padding: var(--cta-btn-card-padding);
+    border: var(--cta-btn-card-border);
+    border-radius: var(--cta-btn-card-border-radius);
+    background-color: var(--cta-btn-card-background-color);
+    display: var(--btn-display);
+    justify-content: var(--btn-justify-content-center);
+    align-items: var(--btn-align-items);
+}

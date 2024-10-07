@@ -1,0 +1,239 @@
+/* -------------------------------------
+   Typography Styles
+   ------------------------------------- */
+
+@import '_variables.css';
+
+/* Inter Font Styles */
+.inter-style-48-120-medium {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xxxxl);
+    line-height: var(--line-height-120);
+    font-weight: var(--font-weight-medium);
+}
+
+.inter-style-14-100-medium-up {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-100);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+}
+
+.inter-style-14-100-semibold {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-100);
+    font-weight: var(--font-weight-semibold);
+}
+
+.inter-style-14-100-regular {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-100);
+    font-weight: var(--font-weight-regular);
+}
+
+.inter-style-14-150-regular {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-150);
+    font-weight: var(--font-weight-regular);
+}
+
+.inter-style-14-125-regular {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-125);
+    font-weight: var(--font-weight-regular);
+}
+
+.inter-style-16-150-regular {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-150);
+    font-weight: var(--font-weight-regular);
+}
+
+.inter-style-16-150-medium-underlined {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-150);
+    font-weight: var(--font-weight-medium);
+    text-decoration: underline;
+}
+
+.inter-style-16-100-medium {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-100);
+    font-weight: var(--font-weight-medium);
+}
+
+.inter-style-16-125-medium {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-125);
+    font-weight: var(--font-weight-medium);
+}
+
+.inter-style-16-100-regular {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-100);
+    font-weight: var(--font-weight-regular);
+}
+
+.inter-style-24-130-medium {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xxl);
+    line-height: var(--line-height-130);
+    font-weight: var(--font-weight-medium);
+}
+
+.inter-style-64-125-semibold {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xxxxxl);
+    line-height: var(--line-height-125);
+    font-weight: var(--font-weight-semibold);
+}
+
+.inter-style-20-100-medium {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-100);
+    font-weight: var(--font-weight-medium);
+}
+
+.inter-style-20-125-medium {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-125);
+    font-weight: var(--font-weight-medium);
+}
+
+.inter-style-20-140--2-regular {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-140);
+    letter-spacing: -2%;
+    font-weight: var(--font-weight-regular);
+}
+
+.inter-style-18-150-regular {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-150);
+    font-weight: var(--font-weight-regular);
+}
+
+.inter-style-18-125-medium {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-125);
+    font-weight: var(--font-weight-medium);
+}
+
+.inter-style-12-150-regular {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-150);
+    font-weight: var(--font-weight-regular);
+}
+
+.inter-style-12-100-regular-up {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-100);
+    font-weight: var(--font-weight-regular);
+    text-transform: uppercase;
+}
+
+.inter-style-32-125-medium {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xxxl);
+    line-height: var(--line-height-125);
+    font-weight: var(--font-weight-medium);
+}
+
+.inter-style-32-125-bold {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xxxl);
+    line-height: var(--line-height-125);
+    font-weight: var(--font-weight-bold);
+}
+
+.inter-style-32-100-extrabold {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xxxl);
+    line-height: var(--line-height-100);
+    font-weight: var(--font-weight-extrabold);
+}
+
+/* Plus Jakarta Sans Font Styles */
+.plusjakarta-style-64-125-semibold {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-xxxxxl);
+    line-height: var(--line-height-125);
+    font-weight: var(--font-weight-semibold);
+}
+
+.plusjakarta-style-48-125-semibold {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-xxxxl);
+    line-height: var(--line-height-125);
+    font-weight: var(--font-weight-semibold);
+}
+
+.plusjakarta-style-48-120-medium {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-xxxxl);
+    line-height: var(--line-height-120);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Montserrat Font Styles */
+.montserrat-style-120-100-bold {
+    font-family: var(--font-tertiary);
+    font-size: var(--font-size-xxxxxxl);
+    line-height: var(--line-height-100);
+    font-weight: var(--font-weight-bold);
+}
+
+.montserrat-style-120-125-semibold {
+    font-family: var(--font-tertiary);
+    font-size: var(--font-size-xxxxxxl);
+    line-height: var(--line-height-125);
+    font-weight: var(--font-weight-semibold);
+}
+
+.montserrat-style-80-120-medium {
+    font-family: var(--font-tertiary);
+    font-size: var(--font-size-xxxxl);
+    line-height: var(--line-height-120);
+    font-weight: var(--font-weight-medium);
+}
+
+.montserrat-style-80-100-medium {
+    font-family: var(--font-tertiary);
+    font-size: var(--font-size-xxxxl);
+    line-height: var(--line-height-100);
+    font-weight: var(--font-weight-medium);
+}
+
+.montserrat-style-64-150-semibold {
+    font-family: var(--font-tertiary);
+    font-size: var(--font-size-xxxxxl);
+    line-height: var(--line-height-150);
+    font-weight: var(--font-weight-semibold);
+}
+
+.montserrat-style-74-120--3-semibold {
+    font-family: var(--font-tertiary);
+    font-size: var(--font-size-xxxxxl);
+    line-height: var(--line-height-120);
+    letter-spacing: -3%;
+    font-weight: var(--font-weight-semibold);
+}
+
+

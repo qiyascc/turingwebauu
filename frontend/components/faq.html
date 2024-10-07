@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/base/export.css">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="../assets/css/layouts/layout.css">
+    <script src="../assets/js/components/faqComponent.js" defer></script>
+    <title>Card component</title>
+
+    <style>
+        #learn-by-doing {
+            margin-bottom: 100px;
+        }
+
+        .syllabus-info h2 {
+            margin: 12px 0px 24px 0px;
+        }
+
+        .syllabus-card .download-btn {
+            display: flex;
+            padding: 12px 16px 12px 24px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 100px;
+            border: 1px solid var(--white-medium);
+        }
+
+        #learn-by-doing .modules-area {
+            padding-left: 103px;
+        }
+
+        #learn-by-doing .fields-container {
+            margin-bottom: 8px;
+        }
+
+        .fields-container .begin-study-container {
+            display: inline-flex;
+            padding: 4px;
+            align-items: center;
+            gap: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--white-medium);
+            background-color: var(--white-solid);
+            padding-right: 12px;
+        }
+
+        .begin-study-container .special {
+            display: flex;
+            height: 36px;
+            padding: 8px 12px;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            border-radius: 6px;
+            border: 1px solid var(--white-medium);
+            background: var(--white-solid);
+        }
+
+        .modules-area .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            flex-wrap: nowrap;
+        }
+
+        .module-card p {
+            margin-left: 24px;
+            display: none;
+        }
+
+        .modules-area .module-card {
+            display: flex;
+            padding: 24px 16px;
+            flex-direction: column;
+            border-radius: 8px;
+            gap: 16px;
+            border: 1px solid var(--white-medium);
+        }
+
+        .modules-area .module-card:hover p {
+            display: flex;
+        }
+
+        .module-card h2 {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        @media (min-width:992px) and (max-width:1200px) {
+            #learn-by-doing .modules-area {
+                padding-left: 50px;
+            }
+        }
+
+        @media (min-width:768px) and (max-width:992px) {
+            #learn-by-doing .modules-area {
+                padding-left: 0px;
+            }
+        }
+
+        @media (min-width:576px) and (max-width:768px) {
+            #learn-by-doing .modules-area {
+                padding-left: 0px;
+            }
+
+            #learn-by-doing .syllabus-card {
+                margin-bottom: 52px;
+            }
+        }
+
+        @media (max-width:576px) {
+            #learn-by-doing {
+                margin-bottom: 44px;
+            }
+
+            #learn-by-doing .modules-area {
+                padding-left: 0px;
+            }
+
+            #learn-by-doing .syllabus-card {
+                margin-bottom: 52px;
+            }
+
+            .syllabus-card .download-btn {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <style>
+         #faq{
+           margin-bottom: 100px;
+        }
+
+        #faq .syllabus-info h2{
+            margin: 0%;
+            margin-bottom: 12px;
+        }
+        #faq .modules-area{
+            padding-left: 103px;
+        }
+        #faq .fields-container {
+            margin-bottom: 24px;
+        }
+        #faq .fields-container .begin-study-container {
+            display: inline-flex;
+            padding: 4px;
+            align-items: center;
+            gap: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--white-medium);
+            background-color: var(--white-solid);
+            padding-right: 12px;
+        }
+        #faq .begin-study-container .special {
+            display: flex;
+            height: 36px;
+            padding:8px 12px;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            border-radius:  6px;
+            border: 1px solid var(--white-medium);
+            background: var(--white-solid);
+        }
+        #faq .modules-area .moduls-list{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            flex-wrap: nowrap;
+        }
+        #faq .module-card p{
+            margin-left: 24px;
+            display: none;
+        }
+        #faq .modules-area .module-card{
+            display: flex;
+            padding: 24px 16px;
+            flex-direction: column;
+            border-radius: 8px;
+            gap: 16px;
+            border: 1px solid var(--white-medium);
+        }
+        #faq .modules-area .module-card:hover p{
+            display: flex;
+        }
+        #faq .module-card h2{
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        @media (min-width:992px) and (max-width:1200px){
+            #faq .modules-area {
+                padding-left: 50px;
+            }
+        }
+        @media (min-width:768px) and (max-width:992px){
+            #faq .modules-area {
+                padding-left: 0px;
+            }
+        }
+        @media (min-width:576px) and (max-width:768px) {
+            #faq .modules-area {
+                padding-left: 0px;
+            }
+            #faq .syllabus-card{
+                margin-bottom: 52px;
+            }
+        }
+        @media (max-width:576px){
+            #faq{
+                margin-bottom: 44px;
+            }
+            #faq .modules-area {
+                padding-left: 0px;
+            }
+            #faq .syllabus-card{
+                margin-bottom: 52px;
+            }
+            #faq .syllabus-card .download-btn{
+                width: 100%;
+            }
+        }
+    </style>
+
+    <style>
+        #faq-col{
+           margin-bottom: 100px;
+        }
+        #faq-col .syllabus-card {
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 48px;
+        }
+
+        #faq-col .syllabus-info{
+            text-align: center;
+        }
+
+        #faq-col .syllabus-info h2{
+            margin: 0%;
+            margin-bottom: 12px;
+        }
+        #faq-col .modules-area{
+            width: 80%;
+            margin: 0 auto;
+        }
+        #faq-col .fields-container {
+            margin-bottom: 24px;
+        }
+        #faq-col .fields-container .begin-study-container {
+            display: inline-flex;
+            padding: 4px;
+            align-items: center;
+            gap: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--white-medium);
+            background-color: var(--white-solid);
+            padding-right: 12px;
+        }
+        #faq-col .begin-study-container .special {
+            display: flex;
+            height: 36px;
+            padding:8px 12px;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            border-radius:  6px;
+            border: 1px solid var(--white-medium);
+            background: var(--white-solid);
+        }
+        #faq-col .modules-area .moduls-list{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            flex-wrap: nowrap;
+        }
+        #faq-col .module-card p{
+            margin-left: 24px;
+            display: none;
+        }
+        #faq-col .modules-area .module-card{
+            display: flex;
+            padding: 24px 16px;
+            flex-direction: column;
+            border-radius: 8px;
+            gap: 16px;
+            border: 1px solid var(--white-medium);
+        }
+        #faq-col .modules-area .module-card:hover p{
+            display: flex;
+        }
+        #faq-col .module-card h2{
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        @media (min-width:576px) and (max-width:768px) {
+            #faq-col .syllabus-card{
+                margin-bottom: 48px;
+            }
+            #faq-col .modules-area {
+                padding-left: 0px;
+            }
+        }
+        @media (max-width:576px){
+            #faq-col{
+                margin-bottom: 32px;
+            }
+            #faq-col .syllabus-card{
+                width: 100%;
+                margin: 0;
+                margin-bottom: 48px;
+            }
+            #faq-col .syllabus-info {
+                text-align: start;
+            }
+            #faq-col .modules-area{
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <main>
+        <section id="learn-by-doing">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="syllabus-card">
+                            <div class="syllabus-info">
+                                <p class="inter-style-14-100-medium-up black-solid">Syllabus</p>
+                                <h2 class="plusjakarta-style-48-120-medium black-dark">Learn by doing</h2>
+                            </div>
+                            <button class="download-btn">Download Syllabus
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none">
+                                    <path
+                                        d="M17.5 12.5V15.8333C17.5 16.2754 17.3244 16.6993 17.0118 17.0118C16.6993 17.3244 16.2754 17.5 15.8333 17.5H4.16667C3.72464 17.5 3.30072 17.3244 2.98816 17.0118C2.67559 16.6993 2.5 16.2754 2.5 15.8333V12.5"
+                                        stroke="#171716" stroke-width="1.25" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M5.83398 8.33331L10.0007 12.5L14.1673 8.33331" stroke="#171716"
+                                        stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M10 12.5V2.5" stroke="#171716" stroke-width="1.25" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <div class="modules-area">
+                            <faq-list
+                                style-config="--module-card-background: #fff; --module-card-border: 1px solid #ddd; --header-icon: url('../assets/images/Plus-Icon.png');"
+                                button-style-config="background-color: #007bff; color: white; padding: 0.5rem 1rem; border-radius: 4px;"
+                                modules='{
+                                    "Fundamentals": [
+                                        {"question": "What is UX Design?", "answer": "UX Design focuses on the overall feel of the experience."},
+                                        {"question": "What is Interaction Design?", "answer": "Interaction Design is about how users interact with a product."}
+                                    ],
+                                    "Specialization": [
+                                        {"question": "What are Advanced UX Strategies?", "answer": "Advanced UX Strategies involve complex methodologies and practices."},
+                                        {"question": "What are the latest UI Techniques?", "answer": "Latest UI Techniques include trends in visual and interaction design."}
+                                    ]
+                            }'></faq-list>
+
+                            <br>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="syllabus-card">
+                            <div class="syllabus-info">
+                                <h2 class="plusjakarta-style-48-120-medium black-dark">FAQ</h2>
+                                <p class="inter-style-14-150-regular black-light">We're here to support your design journey.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <div class="modules-area">
+                            
+                            <faq-list
+                                    style-config="--module-card-background: #fff; --module-card-border: 1px solid #ddd; --header-icon: url('../assets/images/Plus-Icon.png');"
+                                    button-style-config="background-color: #007bff; color: white; padding: 0.5rem 1rem; border-radius: 4px;"
+                                    modules='{
+                                "general": [
+                                    {"question": "What is UX Design?", "answer": "UX Design focuses on the overall feel of the experience."},
+                                    {"question": "What is Interaction Design?", "answer": "Interaction Design is about how users interact with a product."},
+                                    {"question": "What are Advanced UX Strategies?", "answer": "Advanced UX Strategies involve complex methodologies and practices."},
+                                    {"question": "What are the latest UI Techniques?", "answer": "Latest UI Techniques include trends in visual and interaction design."}
+                                ]
+                            }'></faq-list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq-col">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="syllabus-card">
+                            <div class="syllabus-info">
+                                <h2 class="plusjakarta-style-48-120-medium black-dark">Frequently asked questions (FAQ)</h2>
+                                <p class="inter-style-14-150-regular black-light">We're here to support your design journey.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="modules-area">
+                            <faq-list
+                                    style-config="--module-card-background: #fff; --module-card-border: 1px solid #ddd; --header-icon: url('../assets/images/Plus-Icon.png');"
+                                    button-style-config="background-color: #007bff; color: white; padding: 0.5rem 1rem; border-radius: 4px;"
+                                    modules='{
+                                "general": [
+                                    {"question": "What is UX Design?", "answer": "UX Design focuses on the overall feel of the experience."},
+                                    {"question": "What is Interaction Design?", "answer": "Interaction Design is about how users interact with a product."},
+                                    {"question": "What are Advanced UX Strategies?", "answer": "Advanced UX Strategies involve complex methodologies and practices."},
+                                    {"question": "What are the latest UI Techniques?", "answer": "Latest UI Techniques include trends in visual and interaction design."}
+                                ]
+                            }'></faq-list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+</body>
+
+</html>

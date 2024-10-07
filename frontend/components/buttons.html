@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Button Component</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        th {
+            height: 20vh;
+        }
+
+        tr {
+            height: 10vh;
+        }
+
+        table {
+            width: 90%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <th>
+                Name
+            </th>
+            <th>
+                Descriptiopn
+            </th>
+            <th>
+                Button
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>button-url-left-icon</td>
+                <td>Urlli, ikonlu, ikonu solda olan buton</td>
+                <td>
+
+
+                    <!-- button-url-left-icon -->
+
+                    <custom-button type="url" href="http://example.com" icon="🌟" position="left"
+                        style-config="background-color: blue; color: white; padding: 1rem 2rem; border-radius: 100px;"
+                        class="">Click
+                        me</custom-button>
+
+
+                </td>
+            </tr>
+            <tr>
+                <td>button-url-right-icon</td>
+                <td>Urlli, ikonlu, ikonu sagda olan buton</td>
+                <td>
+
+                    <!-- button-url-right-icon -->
+
+                    <custom-button type="url" href="http://example.com" icon="🌟" position="right"
+                        style-config="background-color: blue; color: white; padding: 1rem 2rem; border-radius: 100px;"
+                        class="">Click
+                        me</custom-button>
+
+
+                </td>
+            </tr>
+            <tr>
+                <td>button-url</td>
+                <td>Urlli, ikonsuz olan buton</td>
+                <td>
+
+                    <!-- button-url -->
+
+                    <custom-button type="url" href="http://example.com"
+                        style-config="background-color: blue; color: white; padding: 1rem 2rem; border-radius: 100px;"
+                        class="">Click
+                        me</custom-button>
+
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>button-left-icon</td>
+                <td>Submit, ikonlu, ikonu solda olan buton</td>
+                <td>
+
+                    <!-- button-left-icon -->
+
+                    <custom-button type="submit" href="http://example.com" icon="🌟" position="left"
+                        style-config="background-color: blue; color: white; padding: 1rem 2rem; border-radius: 100px;"
+                        class="">Click
+                        me</custom-button>
+
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>button-right-icon</td>
+                <td>Submit, ikonlu, ikonu sagda olan buton</td>
+                <td>
+
+                    <!-- button-right-icon -->
+
+                    <custom-button type="submit" href="http://example.com" icon="🌟" position="right"
+                        style-config="background-color: blue; color: white; padding: 1rem 2rem; border-radius: 100px;"
+                        class="">Click
+                        me</custom-button>
+
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>button-left-icon</td>
+                <td>Submit, ikonsuz olan buton</td>
+                <td>
+
+                    <!-- button-left-icon -->
+
+                    <custom-button type="submit" href="http://example.com"
+                        style-config="background-color: blue; color: white; padding: 1rem 2rem; border-radius: 100px;"
+                        class="">Click
+                        me</custom-button>
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+    <script>
+        class CustomButton extends HTMLElement {
+            constructor() {
+                super();
+                this.attachShadow({ mode: 'open' });
+
+                try {
+                    this.createButton();
+                    this.applyStyles();
+                } catch (error) {
+                    console.error("Constructor Error: ", error);
+                }
+            }
+
+            createButton() {
+                try {
+                    const type = this.getAttribute('type');
+                    const isUrlType = type === 'url';
+                    this.element = document.createElement(isUrlType ? 'a' : 'button');
+
+                    if (isUrlType) {
+                        this.element.href = this.getAttribute('href') || '#';
+                        this.element.target = '_blank';
+                        this.element.rel = 'noopener noreferrer';
+                    }
+
+                    this.createInnerContainer();
+                    this.element.appendChild(this.innerContainer);
+                    this.shadowRoot.appendChild(this.element);
+                } catch (error) {
+                    console.error("createButton Error: ", error);
+                }
+            }
+
+            createInnerContainer() {
+                try {
+                    this.innerContainer = document.createElement('span');
+                    this.innerContainer.style.display = 'flex';
+                    this.innerContainer.style.alignItems = 'center';
+
+                    const position = this.getAttribute('position');
+                    const icon = this.getAttribute('icon');
+
+                    if (icon) {
+                        this.addIconToContainer(icon, position);
+                    } else {
+                        this.innerContainer.appendChild(document.createTextNode(this.textContent));
+                    }
+                } catch (error) {
+                    console.error("createInnerContainer Error: ", error);
+                }
+            }
+
+            addIconToContainer(icon, position) {
+                try {
+                    const iconElement = document.createElement('span');
+                    iconElement.textContent = icon;
+
+                    if (position === 'left') {
+                        iconElement.style.marginRight = '0.5rem';
+                        this.innerContainer.appendChild(iconElement);
+                        this.innerContainer.appendChild(document.createTextNode(this.textContent));
+                    } else if (position === 'right') {
+                        iconElement.style.marginLeft = '0.5rem';
+                        this.innerContainer.appendChild(document.createTextNode(this.textContent));
+                        this.innerContainer.appendChild(iconElement);
+                    } else {
+                        console.warn(`Invalid 'position' attribute value '${position}'. Expected 'left' or 'right'.`);
+                        this.innerContainer.appendChild(document.createTextNode(this.textContent));
+                    }
+                } catch (error) {
+                    console.error("addIconToContainer Error: ", error);
+                }
+            }
+
+            applyStyles() {
+                try {
+                    const styleConfig = this.getAttribute('style-config');
+                    if (styleConfig) {
+                        this.setCustomStyles(styleConfig);
+                    }
+
+                    this.element.style.display = 'inline-flex';
+                    this.element.style.alignItems = 'center';
+                    this.element.style.border = 'none';
+                    this.element.style.cursor = 'pointer';
+                    this.element.style.transition = 'background-color 0.3s';
+                    this.element.style.textDecoration = 'none';
+                } catch (error) {
+                    console.error("applyStyles Error: ", error);
+                }
+            }
+
+            setCustomStyles(styleConfig) {
+                try {
+                    const styles = styleConfig.split(';').filter(Boolean);
+                    styles.forEach(style => {
+                        const [property, value] = style.split(':').map(s => s.trim());
+                        if (property && value) {
+                            this.element.style[property] = value;
+                        }
+                    });
+                } catch (error) {
+                    console.error("setCustomStyles Error: ", error);
+                }
+            }
+        }
+
+        customElements.define('custom-button', CustomButton);
+
+
+    </script>
+</body>
+
+</html>

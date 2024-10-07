@@ -1,0 +1,161 @@
+<footer class="w-full dark:bg-gray-900 flex justify-between flex-col">
+        <!-- Content will be dynamically generated here -->
+      </footer>
+    
+      <script>
+        const footerData = [
+          {
+            logo: "../assets/images/Logo.png",
+            description: "Learn highly demanded skills through practical courses, created by trusted industry professionals.",
+            social: [
+              { linkedin: ["../assets/icons/linkedin-icon.png", "https://linkedin.com"] },
+              { linkedin: ["../assets/icons/linkedin-icon.png", "https://linkedin.com"] },
+              { linkedin: ["../assets/icons/linkedin-icon.png", "https://linkedin.com"] },
+              { linkedin: ["../assets/icons/linkedin-icon.png", "https://linkedin.com"] },
+              { twitter: ["../assets/icons/twitter-icon.png", "https://twitter.com"] },
+              { facebook: ["../assets/icons/facebook-icon.png", "https://facebook.com"] }
+            ],
+            sitemaps: [
+              {
+                type: "y-underline", 
+                title: "Academy", 
+                content: [
+                  { title: "About us", url: "#" },
+                  { title: "About us", url: "#" },
+                  { title: "About us", url: "#" },
+                  { title: "About us", url: "#" },
+                  { title: "About us", url: "#" },
+                  { title: "About us", url: "#" },
+                  { title: "Community", url: "#" }
+                ], 
+                order: 1
+              },
+              {
+                type: "n-underline", 
+                title: "Events", 
+                content: [
+                  { title: "Seminar", url: "#" },
+                  { title: "Seminar", url: "#" },
+                  { title: "Seminar", url: "#" },
+                  { title: "Seminar", url: "#" },
+                  { title: "Seminar", url: "#" },
+                  { title: "Workshop", url: "#" }
+                ], 
+                order: 2
+              }
+            ]
+          }
+        ];
+    
+        function generateFooter(data) {
+          const footer = document.querySelector('footer');
+    
+          // Container for footer sections
+          const footerContainer = document.createElement('div');
+          footerContainer.className = "mx-auto container py-6 lg:py-8 grid grid-cols-2 gap-10 md:grid-cols-6";
+          footer.appendChild(footerContainer);
+    
+          // Logo and Description Section
+          const logoSection = document.createElement('div');
+          logoSection.className = "space-y-4 col-span-2 md:col-span-2";
+          footerContainer.appendChild(logoSection);
+    
+          const logoDiv = document.createElement('div');
+          const logoImg = document.createElement('img');
+          logoImg.src = data.logo;
+          logoImg.alt = "Company Logo";
+          logoDiv.appendChild(logoImg);
+          logoSection.appendChild(logoDiv);
+    
+          const description = document.createElement('p');
+          description.className = "text-white logo-text";
+          description.textContent = data.description;
+          logoSection.appendChild(description);
+    
+          // Social Links Section
+          const socialContainer = document.createElement('div');
+          socialContainer.className = "md:space-y-2 space-x-2 md:space-x-0 footer-list";
+          logoSection.appendChild(socialContainer);
+    
+          const socialList = document.createElement('ul');
+          socialList.className = "flex space-x-4";
+          data.social.forEach(socialItem => {
+            const [platform, details] = Object.entries(socialItem)[0];
+            const [icon, url] = details;
+    
+            const socialLink = document.createElement('a');
+            socialLink.href = url;
+    
+            const socialIcon = document.createElement('img');
+            socialIcon.src = icon;
+            socialIcon.alt = `${platform} Icon`;
+            socialLink.appendChild(socialIcon);
+    
+            const socialListItem = document.createElement('li');
+            socialListItem.appendChild(socialLink);
+            socialList.appendChild(socialListItem);
+          });
+          socialContainer.appendChild(socialList);
+    
+          // Sitemaps - Sort by 'order'
+          const sortedSitemaps = data.sitemaps.sort((a, b) => a.order - b.order);
+    
+          sortedSitemaps.forEach(item => {
+            if (item.type !== "y-underline" && item.type !== "n-underline") {
+              console.error(`Invalid type "${item.type}" found in sitemaps.`);
+              return;
+            }
+    
+            const sitemapSection = document.createElement('div');
+            sitemapSection.className = "col-span-2 md:col-span-1";
+            footerContainer.appendChild(sitemapSection);
+    
+            const sitemapTitle = document.createElement('h2');
+            sitemapTitle.className = "mb-6 text-sm font-semibold text-white uppercase dark:text-white";
+            sitemapTitle.textContent = item.title;
+            sitemapSection.appendChild(sitemapTitle);
+    
+            const sitemapList = document.createElement('ul');
+            sitemapList.className = "text-gray-500 dark:text-gray-400 font-medium";
+            item.content.forEach(linkItem => {
+              const sitemapLink = document.createElement('a');
+              sitemapLink.href = linkItem.url;
+              sitemapLink.textContent = linkItem.title;
+    
+              if (item.type === "n-underline") {
+                sitemapLink.className = "no-underline"; // Remove underline
+              } else {
+                sitemapLink.className = "underline"; // Default underline for "y-underline"
+              }
+    
+              const sitemapListItem = document.createElement('li');
+              sitemapListItem.className = "mb-4";
+              sitemapListItem.appendChild(sitemapLink);
+              sitemapList.appendChild(sitemapListItem);
+            });
+    
+            sitemapSection.appendChild(sitemapList);
+          });
+    
+          // Footer Bottom Section
+          const footerBottom = document.createElement('div');
+          footerBottom.className = "mx-auto container flex flex-col";
+          footer.appendChild(footerBottom);
+    
+          const rightsBox = document.createElement('div');
+          rightsBox.className = "px-4 py-6 text-white dark:bg-gray-700 md:flex md:items-center md:justify-between rights-box";
+          footerBottom.appendChild(rightsBox);
+    
+          const copyright = document.createElement('span');
+          copyright.className = "text-sm dark:text-gray-300 sm:text-center";
+          copyright.textContent = "© 2023. All Rights Reserved.";
+          rightsBox.appendChild(copyright);
+    
+          const creator = document.createElement('span');
+          creator.innerHTML = 'Created by <a href="#" class="underline">SHI Studio.</a>';
+          rightsBox.appendChild(creator);
+        }
+    
+        // Call the function with footerData[0]
+        generateFooter(footerData[0]);
+      </script>

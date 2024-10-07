@@ -10,7 +10,7 @@ class NavigationManager {
         const navBar = this.createNavBar();
         container.appendChild(navBar);
     }
-
+//
     createNavBar() {
         const navBar = document.createElement('nav');
         navBar.classList.add('navigation-bar');
@@ -103,7 +103,7 @@ class NavigationManager {
             innerLi.appendChild(innerLink);
             innerList.appendChild(innerLi);
         });
-
+//
         return innerList;
     }
 
@@ -159,7 +159,6 @@ class NavigationManager {
             newVideoElement.appendChild(sourceElement);
             videoHeader.appendChild(newVideoElement);
 
-            // Fallback text in case the browser does not support the video tag
             const fallbackText = document.createElement('p');
             fallbackText.textContent = "Your browser does not support the video tag.";
             videoHeader.appendChild(fallbackText);

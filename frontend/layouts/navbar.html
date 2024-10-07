@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+
+  <link rel="stylesheet" href="../assets/css/layouts/main.css">
+  <link rel="stylesheet" href="../assets/css/layouts/layout.css">
+  <link rel="stylesheet" href="../assets/css/layouts/navbar.css">
+  <link rel="stylesheet" href="../assets/css/base/export.css">
+
+  <title>Document</title>
+
+  <style>
+    /* Temel stil ayarları */
+    /* .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    } */
+    .navigation-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0px; 
+    }
+    .logo img {
+      width: 100px;
+    }
+    .nav-list {
+      display: flex;
+      list-style: none;
+    }
+    .nav-item {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .cta-btn-nav button {
+      background-color: #ff6f61;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .cta-btn-nav a {
+      text-decoration: none;
+      color: white;
+    }
+    .dropdown img {
+      width: 10px;
+      height: 10px;
+      margin-left: 5px;
+    }
+    .inner-list {
+      display: none;
+      position: absolute;
+      background-color: #444;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .inner-list li {
+      margin: 5px 0;
+    }
+    .inner-list a {
+      color: white;
+      text-decoration: none;
+    }
+    .dropdown:hover .inner-list {
+      display: block;
+    }
+
+    .btn-groups .watch-btn {
+      padding: 0;
+      gap: 0;
+      border: 1px solid var(--black-light);
+      background: var(--blue-ultradark);
+      color: var(--white-solid, #fff);
+      font-family: var(--font-primary);
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-100);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .btn-groups .cta-btn{
+      padding: 0;
+    }
+
+    /* @media (max-width:425px){
+
+    } */
+
+  </style>
+
+
+
+
+</head>
+<body>
+
+  <header>
+    <div class="container"></div>
+    <!-- <navbar></navbar> -->
+    <div class="turing-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="466" height="554" viewBox="0 0 466 554" fill="none">
+            <path opacity="0.4"
+                d="M146.625 546.834L68.046 553.747L26.0965 76.9706C20.4262 77.4695 15.9654 77.862 11.5048 78.2545C-34.2613 82.2812 -80.0252 86.3332 -125.794 90.3348C-141.393 91.7073 -145.348 88.3285 -146.846 72.7422C-147.772 63.0886 -148.67 53.4578 -149.394 43.7864C-150.407 29.9575 -147.474 26.3529 -133.943 25.137C-59.2058 18.4345 15.5333 11.7571 90.2812 5.18039C207.015 -5.09051 323.76 -15.2356 440.5 -25.431C460.031 -27.1495 460.968 -26.3193 462.746 -6.39708C463.559 2.83557 464.47 12.0342 465.181 21.2757C466.191 34.7754 463.161 38.4392 449.355 39.7046C408.638 43.3885 367.908 46.9215 327.157 50.507C322.671 50.9017 318.16 51.2986 314.43 51.6267C318.45 97.312 321.543 141.71 326.548 185.889C329.403 211.116 340.888 218.979 369.822 220.21L375.663 286.6C372.334 287.729 369.183 288.868 365.992 289.834C347.759 295.342 338.465 305.743 339.385 324.574C341.142 359.836 344.719 395.014 347.211 430.262C347.991 441.145 348.992 452.237 347.727 462.971C342.849 503.938 319.206 528.48 277.354 535.433C259.583 538.391 241.386 538.825 222.309 540.504L216.589 475.498C224.956 474.762 233.267 474.259 241.509 473.255C262.619 470.713 269.558 463.562 268.63 441.765C267.545 416.153 264.662 390.599 262.715 365.013C261.676 351.186 260.203 337.321 260.229 323.477C260.254 295.182 272.857 274.476 299.32 262.92C301.177 262.097 302.812 260.762 304.88 259.439C264.222 246.183 250.667 228.945 246.949 186.402C244.404 157.471 242.012 128.553 239.214 99.6442C238.504 92.1518 237.451 84.5122 235.052 77.4473C230.376 63.5603 223.81 59.6508 209.291 60.9028C174.882 63.8289 140.464 66.9333 104.627 70.0864L146.574 546.838L146.625 546.834Z"
+                fill="url(#paint0_linear_976_479)" fill-opacity="0.34" />
+            <defs>
+                <linearGradient id="paint0_linear_976_479" x1="-43.6865" y1="-58.857" x2="567.428" y2="453.338"
+                    gradientUnits="userSpaceOnUse">
+                    <stop stop-color="white" stop-opacity="0.7" />
+                    <stop offset="1" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <div class="header-container">
+        <div class="inner-section">
+            <div class="content-box">
+                <div class="heading-box">
+                    <h2 class="heading-text" id="text-header">
+
+                    
+                    </h2>
+                    <p class="content-info" id="sub-text-header" >Learn highly demanded skills through practical courses, created bytrusted
+                        industry professionals, that focus on real-world applications.t</p>
+                </div>
+                <div class="btn-groups">
+
+                    <custom-button type="submit" href="http://example.com"
+                        style-config="background-color:var(--blue-light); padding: 1rem 2rem; border-radius: 100px; color: var(--white-solid); font-family: var(--font-primary); font-size: var(--font-size-md);line-height: var(--line-height-100);font-weight: var(--font-weight-medium);"
+                        class="cta-btn">
+                        Apply now
+                    </custom-button>
+
+                    <custom-button type="url" href="http://example.com" icon="🌟" position="left"
+                        style-config="
+                          background-color:tarnsparent; 
+                          color: white; 
+                          padding: 1rem 2rem;
+                          border: 1px solid white; 
+                          border-radius: 100px;
+                        "
+                        class="watch-btn">
+                        Watch Video
+                    </custom-button>   
+                </div>
+            </div>
+        </div>
+        <div class="wireframe">
+
+            <div class="row items-center justify-center">
+                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wirefame-box">
+                        <video id="video-header" autoplay muted  width="100%" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- </div> -->
+</header>
+
+  <main>
+
+  </main>
+
+
+  <script>
+    // Verilen data objesi
+    const data = [
+      {
+        logo: ["../assets/images/turing-logo-color.png", "Turing Logo", 1],
+        nav: [
+          { type: "normal", url: ["Academy", "#"], order: 1 },
+          { 
+            type: "dropdown", 
+            urls: [
+              { name: "Fields of Study 1", url: "#" },
+              { name: "Fields of Study 2", url: "#" },
+              { name: "Fields of Study 3", url: "#" }
+            ],
+            order: 2
+          },
+          { type: "normal", url: ["Events", "#"], order: 3 },
+          { type: "normal", url: ["Scholarship Program", "#"], order: 4 }
+        ],
+        cta: ["Apply now", "#"],
+
+        headerText:"#BirAddımÖndə",
+        subHeaderText : "Learn highly demanded skills through Mehdi courses, created bytrusted industry professionals, that focus on real-world applications.t" ,
+
+        video:[
+          { url :"https://www.w3schools.com/html/mov_bbb.mp4"  , posterUrl : "https://via.placeholder.com/800x450.png?text=Video+Loading..." }
+        ]
+
+
+      }
+    ];
+
+    function createNavigation(navData) {
+      const container = document.querySelector('.container');
+      
+      // Navigation bar oluşturma
+      const navBar = document.createElement('nav');
+      navBar.classList.add('navigation-bar');
+
+      // Header blur efekti
+      const headerBlurBox = document.createElement('div');
+      headerBlurBox.classList.add('header-blur-box');
+      const blurImg = document.createElement('img');
+      blurImg.src = "../assets/images/Blur (3).png";
+      headerBlurBox.appendChild(blurImg);
+      navBar.appendChild(headerBlurBox);
+
+      // Logo oluşturma
+      const logoDiv = document.createElement('div');
+      logoDiv.classList.add('logo');
+      const logoImg = document.createElement('img');
+      logoImg.src = navData.logo[0];
+      logoImg.alt = navData.logo[1];
+      logoDiv.appendChild(logoImg);
+      navBar.appendChild(logoDiv);
+
+      // Nav list oluşturma ve sıralama
+      const navList = document.createElement('ul');
+      navList.classList.add('nav-list');
+      
+      // Navigasyon öğelerini sıralama
+      const sortedNavItems = navData.nav.sort((a, b) => a.order - b.order);
+
+      sortedNavItems.forEach(item => {
+        const navItem = document.createElement('li');
+        if (item.type === 'normal') {
+          const link = document.createElement('a');
+          link.href = item.url[1];
+          link.textContent = item.url[0];
+          link.classList.add('nav-item');
+          navItem.appendChild(link);
+        } else if (item.type === 'dropdown') {
+          const dropdownLink = document.createElement('a');
+          dropdownLink.href = '#';
+          dropdownLink.textContent = 'Fields of Study';
+          dropdownLink.classList.add('nav-item');
+          
+          const dropdownIcon = document.createElement('img');
+          dropdownIcon.src = '../assets/images/Icon.png';
+          dropdownIcon.alt = 'Dropdown Icon';
+          
+          const innerList = document.createElement('ul');
+          innerList.classList.add('inner-list');
+          
+          item.urls.forEach(subItem => {
+            const innerLi = document.createElement('li');
+            const innerLink = document.createElement('a');
+            innerLink.href = subItem.url;
+            innerLink.textContent = subItem.name;
+            innerLink.style.color = "white";
+            innerLi.appendChild(innerLink);
+            innerList.appendChild(innerLi);
+          });
+
+          navItem.classList.add('dropdown');
+          navItem.style.position = "relative";
+          navItem.appendChild(dropdownLink);
+          navItem.appendChild(dropdownIcon);
+          navItem.appendChild(innerList);
+        }
+
+        navList.appendChild(navItem);
+      });
+
+      navBar.appendChild(navList);
+
+      // CTA button
+      const ctaBtnNav = document.createElement('custom-button');
+      // ctaBtnNav.classList.add('cta-btn-nav');
+      ctaBtnNav.setAttribute("type" , "url");
+      ctaBtnNav.setAttribute("href" , "http://example.com");
+      ctaBtnNav.setAttribute( "style-config",
+      "background-color:var(--blue-light); padding: 1rem 2rem; border-radius: 100px; color: var(--white-solid); font-family: var(--font-primary); font-size: var(--font-size-md);line-height: var(--line-height-100);font-weight: var(--font-weight-medium);");
+      ctaBtnNav.setAttribute("class" , "cta-btn-nav");
+      const ctaButton = document.createElement('button');
+      const ctaLink = document.createElement('a');
+      ctaLink.href = navData.cta[1];
+      ctaLink.textContent = navData.cta[0];
+      ctaButton.appendChild(ctaLink);
+      ctaBtnNav.appendChild(ctaButton);
+      navBar.appendChild(ctaBtnNav);
+
+      // Hamburger menu butonu
+      const openBtnNav = document.createElement('div');
+      openBtnNav.classList.add('open-btn-nav');
+      const menuImg = document.createElement('img');
+      menuImg.src = "../assets/images/menu-nav-1.png";
+      openBtnNav.appendChild(menuImg);
+      navBar.appendChild(openBtnNav);
+
+      // Menü yapısını container'a ekleme
+      container.appendChild(navBar);
+
+      // Responsive Menu Oluşturma
+      createResponsiveMenu(navData);
+    }
+
+    function createResponsiveMenu(navData) {
+      const container = document.querySelector('.container');
+      const resMenu = document.createElement('div');
+      resMenu.classList.add('responsive-menu');
+
+      // Logo ve Close Butonları
+      const logoCloseContainer = document.createElement('div');
+      logoCloseContainer.classList.add('logo-close-container');
+      
+      const resLogo = document.createElement('img');
+      resLogo.src = navData.logo[0];
+      resLogo.alt = navData.logo[1];
+
+      const closeBtnNav = document.createElement('div');
+      closeBtnNav.classList.add('close-btn-nav');
+      const closeImg = document.createElement('img');
+      closeImg.src = '../assets/images/add.png';
+      closeBtnNav.appendChild(closeImg);
+
+      logoCloseContainer.appendChild(resLogo);
+      logoCloseContainer.appendChild(closeBtnNav);
+      resMenu.appendChild(logoCloseContainer);
+
+      // Responsive Nav List ve sıralama
+      const resNavbar = document.createElement('ul');
+      resNavbar.classList.add('res-navbar');
+      
+      // Navigasyon öğelerini sıralama
+      const sortedNavItems = navData.nav.sort((a, b) => a.order - b.order);
+
+      sortedNavItems.forEach(item => {
+        const resNavItem = document.createElement('li');
+        if (item.type === 'normal') {
+          const link = document.createElement('a');
+          link.href = item.url[1];
+          link.textContent = item.url[0];
+          link.classList.add('nav-item');
+          resNavItem.appendChild(link);
+        } else if (item.type === 'dropdown') {
+          const dropdownLink = document.createElement('a');
+          dropdownLink.href = '#';
+          dropdownLink.textContent = 'Fields of Study';
+          dropdownLink.classList.add('nav-item');
+          
+          const dropdownIcon = document.createElement('img');
+          dropdownIcon.src = '../assets/images/Icon.png';
+          dropdownIcon.alt = 'Dropdown Icon';
+          
+          const innerList = document.createElement('ul');
+          innerList.classList.add('inner-list');
+          innerList.style.display = "none";
+          innerList.style.position = "absolute";
+          innerList.style.top = "30px";
+          innerList.style.right = "-60px";
+          
+          item.urls.forEach(subItem => {
+            const innerLi = document.createElement('li');
+            const innerLink = document.createElement('a');
+            innerLink.href = subItem.url;
+            innerLink.textContent = subItem.name;
+            innerLink.style.color = "white";
+            innerLi.appendChild(innerLink);
+            innerList.appendChild(innerLi);
+          });
+
+          resNavItem.style.display = "flex";
+          resNavItem.style.position = "relative";
+          resNavItem.appendChild(dropdownLink);
+          resNavItem.appendChild(dropdownIcon);
+          resNavItem.appendChild(innerList);
+        }
+
+        resNavbar.appendChild(resNavItem);
+      });
+
+      resMenu.appendChild(resNavbar);
+
+      // Responsive CTA Button
+      const resCta = document.createElement('custom-button');
+      resCta.setAttribute("type" , "url");
+      resCta.setAttribute("href" , "http://example.com");
+      resCta.setAttribute( "style-config",
+      "width:100% ;display:flex; padding:16px 32px ; justify-content: center;align-items: center;margin: 32px 0; background-color:var(--blue-light); padding: 1rem 2rem; border-radius: 100px; color: var(--white-solid); font-family: var(--font-primary); font-size: var(--font-size-md);line-height: var(--line-height-100);font-weight: var(--font-weight-medium);");
+      resCta.setAttribute("class" , "res-cta");
+      // resCta.classList.add('res-cta');
+      const resCtaButton = document.createElement('button');
+      const resCtaLink = document.createElement('a');
+      resCtaLink.href = navData.cta[1];
+      resCtaLink.textContent = navData.cta[0];
+      resCtaButton.appendChild(resCtaLink);
+      resCta.appendChild(resCtaButton);
+      resMenu.appendChild(resCta);
+
+      container.appendChild(resMenu);
+
+      
+    }
+
+    createNavigation(data[0]);
+
+    function getHeaderAssests(data) {
+
+      const mainText = document.querySelector("#text-header");
+      
+      mainText.textContent = data.headerText;
+
+      const subText = document.querySelector('#sub-text-header');
+
+      subText.textContent = data.subHeaderText;
+
+      const headerVideo = document.querySelector('#video-header');
+
+      console.log(data.video[0].url);
+
+      headerVideo.setAttribute("src" , data.video[0].url );
+
+      headerVideo.setAttribute("poster" , data.video[0].posterUrl );
+
+    }
+
+    getHeaderAssests(data[0]);
+
+  </script>
+   <script src="../assets/js/components/buttonComponent.js"></script>
+   <script src="../assets/js/components/navbar.js"></script>
+
+</body>
+</html>
