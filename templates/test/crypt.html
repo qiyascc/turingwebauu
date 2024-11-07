@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Örnek Sayfa</title>
+    <!-- Burada JavaScript dosyasının bağlanması -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script>
+        // Kullanıcının IP adresini alan (dummy) fonksiyon
+        async function getUserIP() {
+            return '192.168.1.1'; // Gerçek IP alma işlemini buraya koyabilirsiniz
+        }
+
+        // Class isimlerini hash ile değiştirme fonksiyonu
+        function hashClassName(ip, customString, oldClass) {
+            const combinedString = ip + customString + oldClass;
+            return CryptoJS.SHA512(combinedString).toString();
+        }
+
+        // Class isimlerini değiştirme ve CSS dosyaları oluşturma
+        async function renameClassesAndCreateCSSFiles() {
+            const customString = "MySecretString"; // Burayı değiştirebilirsiniz
+            const userIP = await getUserIP();
+            const elements = document.querySelectorAll('*');
+            const styleSheets = Array.from(document.styleSheets);
+            const stylesMap = new Map();
+            const linkContainer = document.head; // <link> etiketlerinin ekleneceği yer
+
+            styleSheets.forEach(sheet => {
+                try {
+                    const rules = sheet.cssRules || [];
+                    for (let rule of rules) {
+                        if (rule.selectorText) {
+                            const selectors = rule.selectorText.split(',').map(s => s.trim());
+                            selectors.forEach(selector => {
+                                stylesMap.set(selector, rule.style.cssText);
+                            });
+                        }
+                    }
+                } catch (e) {
+                    console.warn(`Stil dosyasına erişilemedi: ${sheet.href}`, e);
+                }
+            });
+
+            elements.forEach(element => {
+                const oldClasses = Array.from(element.classList);
+                oldClasses.forEach(oldClass => {
+                    const newClass = hashClassName(userIP, customString, oldClass);
+
+                    // Eski class'ı kaldırıp, yeni hash'lenmiş class'ı ekliyoruz
+                    element.classList.remove(oldClass);
+                    element.classList.add(newClass);
+
+                    // CSS dosyası yaratma ve içerik ekleme
+                    const inlineStyle = stylesMap.get('.' + oldClass);
+                    if (inlineStyle) {
+                        const cssContent = `.${newClass} { ${inlineStyle} }`;
+                        const cssFileName = `/styles/dynamic/${newClass}.css`;
+
+                        // <link> etiketi ekleyerek CSS dosyasını sayfaya bağlama
+                        const linkTag = document.createElement('link');
+                        linkTag.rel = 'stylesheet';
+                        linkTag.href = cssFileName;
+                        linkContainer.appendChild(linkTag);
+
+                        // CSS dosyasının sunucuda oluşturulması
+                        // Bu kısmı bir sunucu tarafı çözümüyle, Node.js/PHP ile dosya yazdırarak yapabilirsiniz.
+                        console.log(`CSS dosyası oluşturulmalı: ${cssFileName} içeriği: ${cssContent}`);
+                    }
+                });
+            });
+
+            // İlk style etiketini bul ve kaldır
+            const styleTag = document.querySelector('style');
+            if (styleTag) {
+                styleTag.remove();
+            }
+        }
+
+        // Sayfa yüklendiğinde sınıfları yeniden adlandır ve CSS dosyalarını oluştur
+        document.addEventListener('DOMContentLoaded', renameClassesAndCreateCSSFiles);
+    </script>
+</head>
+<body class="body-style">
+    <header class="header-style">
+        <h1>Benim Web Sayfam</h1>
+        <nav class="nav-style">
+            <a href="#" class="nav-link">Ana Sayfa</a>
+            <a href="#" class="nav-link">Hakkında</a>
+            <a href="#" class="nav-link">İletişim</a>
+            <a href="#" class="nav-link">Hizmetler</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="content-style">
+            <div class="main-style">
+                <h2>Hoş Geldiniz</h2>
+                <p>Bu, basit bir web sayfası örneğidir. Burada CSS ile stillendirilmiş farklı bölümler bulunmaktadır.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel dolor sit amet odio hendrerit feugiat.</p>
+                <a href="#" class="btn-style">Daha Fazla Bilgi</a>
+            </div>
+            <div class="main-style">
+                <h2>Hizmetlerimiz</h2>
+                <ul>
+                    <li>Web Geliştirme</li>
+                    <li>Mobil Uygulama Geliştirme</li>
+                    <li>Dijital Pazarlama</li>
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar-style">
+            <h3 class="sidebar-heading">Yan Menü</h3>
+            <p>Burada yan menü içeriği bulunmaktadır.</p>
+            <ul>
+                <li><a href="#" class="nav-link">Link 1</a></li>
+                <li><a href="#" class="nav-link">Link 2</a></li>
+                <li><a href="#" class="nav-link">Link 3</a></li>
+            </ul>
+        </div>
+    </div>
+    <footer class="footer-style">
+        <p>&copy; 2024 Tüm Hakları Saklıdır</p>
+    </footer>
+</body>
+</html>

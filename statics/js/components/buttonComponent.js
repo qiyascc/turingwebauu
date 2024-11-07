@@ -53,10 +53,24 @@ class CustomButton extends HTMLElement {
     addIconToContainer(icon, position) {
         try {
             const iconElement = document.createElement('span');
-            iconElement.textContent = icon;
+            
+            // Check if the icon is a URL (path to an image or SVG)
+            if (this.isImagePath(icon)) {
+                const imgElement = document.createElement('img');
+                imgElement.src = icon;
+                imgElement.alt = 'icon';
+                imgElement.style.width = '1rem'; // Adjust size as needed
+                imgElement.style.height = '1rem';
+                iconElement.appendChild(imgElement);
+            } else {
+                iconElement.textContent = icon; // Treat as text-based icon
+            }
 
             if (position === 'left') {
                 iconElement.style.marginRight = '0.5rem';
+                iconElement.style.display = 'flex';
+                iconElement.style.alignItems = 'center';
+                iconElement.style.justifyContent = 'center';
                 this.innerContainer.appendChild(iconElement);
                 this.innerContainer.appendChild(document.createTextNode(this.textContent));
             } else if (position === 'right') {
@@ -70,6 +84,10 @@ class CustomButton extends HTMLElement {
         } catch (error) {
             console.error("addIconToContainer Error: ", error);
         }
+    }
+
+    isImagePath(icon) {
+        return icon.startsWith('http') || icon.startsWith('/') || icon.endsWith('.svg') || icon.endsWith('.png') || icon.endsWith('.jpg');
     }
 
     applyStyles() {
@@ -106,4 +124,3 @@ class CustomButton extends HTMLElement {
 }
 
 customElements.define('custom-button', CustomButton);
-

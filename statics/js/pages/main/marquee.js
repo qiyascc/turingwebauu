@@ -5,6 +5,7 @@ function createPartnerElements(data) {
     data.forEach(partner => {
         // Create the list item
         const listItem = document.createElement('li');
+        listItem.classList.add('flex-shrink-0'); // Prevent items from resizing
 
         // Create the anchor tag
         const anchor = document.createElement('a');
@@ -14,6 +15,7 @@ function createPartnerElements(data) {
         const img = document.createElement('img');
         img.src = partner.logo; // Set the partner logo URL
         img.alt = partner.name; // Set the alt text for the image
+        img.classList.add('h-16', 'w-auto'); // Tailwind for image sizing
 
         // Append the img to the anchor
         anchor.appendChild(img);
@@ -24,8 +26,7 @@ function createPartnerElements(data) {
     });
 }
 
-// Call the function to create the partner elements
-    
+// Function to duplicate content for marquee effect
 class Marquee {
     constructor(marqueeSelector, elementsDisplayed) {
         this.marqueeContent = document.querySelector(marqueeSelector);
@@ -40,4 +41,5 @@ class Marquee {
         }
     }
 }
+
 

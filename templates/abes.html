@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../statics/css/layouts/footer.css">
+
+    <style>
+        body {
+            scroll-snap-type: y mandatory;
+            /* Enable vertical snap scrolling */
+            overflow-y: scroll;
+        }
+
+        main {
+            scroll-snap-align: start;
+        }
+
+        main section {
+            scroll-snap-align: start;
+        }
+
+        footer {
+            scroll-snap-align: start;
+        }
+
+        #dropdownMenu {
+            margin-top: 10vh;
+            z-index: 50;
+        }
+
+        #mobile-menu {
+            position: absolute;
+            top: 10vh;
+            right: 5%;
+            background-color: #080d20;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #mobile-menu a {
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        #mobile-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #main {
+            transition: height 0.3s;
+        }
+
+        .rp-font {
+            font-size: clamp(1.5rem, 2vw + 1rem, 3rem);
+        }
+
+        .popup {
+            display: block;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 20px;
+            width: 300px;
+            border-radius: 8px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+
+        .flex-shrink-0 {
+            flex-shrink: 0;
+            border: 1px solid;
+            height: 92px;
+            margin: auto;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+
+        /* For Chrome, Edge, and Safari */
+        ::-webkit-scrollbar {
+            width: 8px;
+            /* Adjusts the scrollbar width */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+            /* Background of the scrollbar track */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #1e90ff;
+            /* Blue scrollbar thumb */
+            border-radius: 4px;
+            /* Makes the scrollbar thumb rounded */
+        }
+
+        /* For Firefox */
+        * {
+            scrollbar-width: thin;
+            /* Thin scrollbar */
+            scrollbar-color: #1e90ff transparent;
+            /* Blue thumb with transparent track */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+</head>
+
+<body id="body" class="bg-[#080d20]">
+
+    <!-- non-dynamic -->
+    <div class="overlay"></div>
+
+    <!-- non-dynamic -->
+    <div class="turing-icon absolute">
+        <svg xmlns="http://www.w3.org/2000/svg" width="466" height="554" viewBox="0 0 466 554" fill="none">
+            <path opacity="0.4"
+                d="M146.625 546.834L68.046 553.747L26.0965 76.9706C20.4262 77.4695 15.9654 77.862 11.5048 78.2545C-34.2613 82.2812 -80.0252 86.3332 -125.794 90.3348C-141.393 91.7073 -145.348 88.3285 -146.846 72.7422C-147.772 63.0886 -148.67 53.4578 -149.394 43.7864C-150.407 29.9575 -147.474 26.3529 -133.943 25.137C-59.2058 18.4345 15.5333 11.7571 90.2812 5.18039C207.015 -5.09051 323.76 -15.2356 440.5 -25.431C460.031 -27.1495 460.968 -26.3193 462.746 -6.39708C463.559 2.83557 464.47 12.0342 465.181 21.2757C466.191 34.7754 463.161 38.4392 449.355 39.7046C408.638 43.3885 367.908 46.9215 327.157 50.507C322.671 50.9017 318.16 51.2986 314.43 51.6267C318.45 97.312 321.543 141.71 326.548 185.889C329.403 211.116 340.888 218.979 369.822 220.21L375.663 286.6C372.334 287.729 369.183 288.868 365.992 289.834C347.759 295.342 338.465 305.743 339.385 324.574C341.142 359.836 344.719 395.014 347.211 430.262C347.991 441.145 348.992 452.237 347.727 462.971C342.849 503.938 319.206 528.48 277.354 535.433C259.583 538.391 241.386 538.825 222.309 540.504L216.589 475.498C224.956 474.762 233.267 474.259 241.509 473.255C262.619 470.713 269.558 463.562 268.63 441.765C267.545 416.153 264.662 390.599 262.715 365.013C261.676 351.186 260.203 337.321 260.229 323.477C260.254 295.182 272.857 274.476 299.32 262.92C301.177 262.097 302.812 260.762 304.88 259.439C264.222 246.183 250.667 228.945 246.949 186.402C244.404 157.471 242.012 128.553 239.214 99.6442C238.504 92.1518 237.451 84.5122 235.052 77.4473C230.376 63.5603 223.81 59.6508 209.291 60.9028C174.882 63.8289 140.464 66.9333 104.627 70.0864L146.574 546.838L146.625 546.834Z"
+                fill="url(#paint0_linear_976_479)" fill-opacity="0.34" />
+            <defs>
+                <linearGradient id="paint0_linear_976_479" x1="-43.6865" y1="-58.857" x2="567.428" y2="453.338"
+                    gradientUnits="userSpaceOnUse">
+                    <stop stop-color="white" stop-opacity="0.7" />
+                    <stop offset="1" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+
+    <header id="header" class="w-full h-[100vh] px-[5%] flex flex-col justify-between z-50 bg-[#080d20]">
+        <!-- dynamic -->
+
+
+        <nav id="navbar" class="inter-medium text-[16px] h-[10vh] flex justify-between items-center relative">
+            <div id="logo-container" class="w-[6.8%] h-[50%] min-w-24 min-h-10">
+                <a id="navigation-logo" class="w-full h-full pageNotFoundPopup" data-popup="qxwsc" href="/">
+                    <img id="logo-in-navbar" class="w-full h-full" src="" alt="" srcset="">
+                </a>
+            </div>
+            <div id="burger-menu" class="md:hidden flex items-center cursor-pointer">
+                <div class="w-6 h-0.5 bg-white mb-1"></div>
+                <div class="w-6 h-0.5 bg-white mb-1"></div>
+                <div class="w-6 h-0.5 bg-white"></div>
+            </div>
+            <div id="navigation-container" class="hidden md:flex space-x-6 text-white">
+
+            </div>
+            <div id="mobile-menu" class="md:hidden hidden flex-col space-y-2 text-white">
+
+            </div>
+            <div class="md:flex items-center space-x-4 hidden">
+                <custom-button type="url" href="#"
+                    style-config="background-color: #2BA6EB; padding: 1rem 2rem; border-radius: 100px; color: white;">Apply
+                    Now</custom-button>
+            </div>
+        </nav>
+
+        <div id="dropdownMenu" class="hidden absolute w-[90vw] h-[50%] shadow-lg z-40 bg-[#080d20]">
+            <div class="py-6">
+                <div class="flex justify-between flex-wrap gap-4" id="dropdown-content">
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <script>
+            const navbarData = {
+                logo: {
+                    src: '../statics/img/core/logo/white-without-icon.png',
+                    alt: 'Turing Academy (Epic IT Education Center) Logo',
+                    href: '/',
+                },
+                navItems: [
+                    { text: 'Academy', href: '#', popup: 'qxwsc', order: 1 },
+                    { text: 'Fields of Study', dropdown: true, order: 2 },
+                    { text: 'Events', href: '#', popup: 'qxwsc', order: 3 },
+                    { text: 'Scholarship Program', href: '#', popup: 'qxwsc', order: 4 },
+                ],
+                dropdownData: {
+                    title: 'Fields of Study',
+                    items: [
+                        { text: 'UX/UI Design', href: '#', description: 'Design Intuitive Digital Experiences' },
+                        { text: 'UX/UI Design', href: '#', description: 'Design Intuitive Digital Experiences' },
+                        { text: 'UX/UI Design', href: '#', description: 'Design Intuitive Digital Experiences' },
+                        { text: 'UX/UI Design', href: '#', description: 'Design Intuitive Digital Experiences' },
+                        { text: 'UX/UI Design', href: '#', description: 'Design Intuitive Digital Experiences' },
+                        { text: 'UX/UI Design', href: '#', description: 'Design Intuitive Digital Experiences' },
+                        { text: 'UX/UI Design', href: '#', description: 'Design Intuitive Digital Experiences' },
+                        { text: 'UX/UI Design', href: '#', description: 'Design Intuitive Digital Experiences' },
+                    ],
+                },
+            };
+
+            function populateNavbar(data) {
+                document.getElementById('navigation-logo').href = data.logo.href;
+                document.getElementById('logo-in-navbar').src = data.logo.src;
+                document.getElementById('logo-in-navbar').alt = data.logo.alt;
+
+                const navContainer = document.getElementById('navigation-container');
+                navContainer.innerHTML = '';
+
+                data.navItems.sort((a, b) => a.order - b.order).forEach(item => {
+                    if (item.dropdown) {
+                        const dropdownBtn = document.createElement('button');
+                        dropdownBtn.className = 'navigation-element flex items-center focus:outline-none justify-center';
+
+                        const dropdownIcon = document.createElement('span');
+                        dropdownIcon.className = 'flex justify-center items-center ml-1 h-4 w-4';
+                        const iconImg = document.createElement('img');
+                        iconImg.id = 'dropdownImg';
+                        iconImg.src = '../statics/img/core/icons/down-arrow.svg';
+                        iconImg.alt = 'Dropdown Icon';
+                        iconImg.className = 'h-full w-full';
+                        dropdownIcon.appendChild(iconImg);
+
+                        dropdownBtn.innerText = item.text;
+                        dropdownBtn.appendChild(dropdownIcon);
+                        dropdownBtn.onclick = () => toggleDropdown(data.dropdownData);
+
+                        navContainer.appendChild(dropdownBtn);
+                    } else {
+                        const navElement = document.createElement('a');
+                        navElement.className = 'navigation-element pageNotFoundPopup';
+                        navElement.href = item.href || '#';
+                        if (item.popup) {
+                            navElement.setAttribute('data-popup', item.popup);
+                        }
+                        navElement.innerText = item.text;
+                        navContainer.appendChild(navElement);
+                    }
+                });
+            }
+
+            function toggleDropdown(dropdownData) {
+                const dropdownMenu = document.getElementById('dropdownMenu');
+                const dropdownContent = document.getElementById('dropdown-content');
+                const dropdownImg = document.getElementById('dropdownImg');
+
+                if (dropdownMenu.classList.contains('hidden')) {
+                    dropdownContent.innerHTML = '';
+                    dropdownData.items.forEach(item => {
+                        const dropdownLink = document.createElement('a');
+                        dropdownLink.className = 'w-[20%] pageNotFoundPopup';
+                        dropdownLink.href = item.href;
+
+                        const dropdownCard = document.createElement('div');
+                        dropdownCard.className = 'w-[100%] backdrop-blur-md bg-[#0D1224] p-4 rounded-lg outline outline-[1px] outline-[#344054]';
+
+                        const title = document.createElement('h3');
+                        title.className = 'inter-medium text-[18px] text-[#ffffff] mb-2 leading-tight';
+                        title.innerText = item.text;
+
+                        const description = document.createElement('p');
+                        description.className = 'inter-regular text-[12px] text-[#ffffff] leading-normal';
+                        description.innerText = item.description;
+
+                        dropdownCard.appendChild(title);
+                        dropdownCard.appendChild(description);
+                        dropdownLink.appendChild(dropdownCard);
+                        dropdownContent.appendChild(dropdownLink);
+                    });
+                    dropdownMenu.classList.remove('hidden');
+                    dropdownImg.classList.add('rotate-180');
+                } else {
+                    dropdownMenu.classList.add('hidden');
+                    dropdownImg.classList.remove('rotate-180');
+                }
+            }
+
+            populateNavbar(navbarData);
+        </script>
+
+
+
+
+
+
+
+        <section id="content-and-media-section" class="h-[72%] flex flex-col justify-between items-center">
+            <div id="content-section" class="w-[100%]">
+                <div id="content-text" class="w-[100%] text-center text-white">
+                    <h1 id="content-header"
+                        class="plus-jakarta-sans-semibold text-[32px] md:text-[64px] lg:96px leading-tight">
+                        #BirAddimÖndə
+                    </h1>
+                    <p id="content-description" class="inter-regular text-[12px] md:text-[16px] lg:20px text-[#CDD5E0]">
+                        Learn highly demanded skills through practical courses, <br>
+                        created bytrusted industry professionals, that focus on real-world applications.
+                    </p>
+                </div>
+                <div id="content-buttons" class="w-[100%] flex justify-center gap-4 mt-[56px]">
+                    <custom-button type="url" href="#"
+                        style-config="background-color: #2BA6EB; padding: 1rem 2rem; border-radius: 100px; color: white;">Apply
+                        Now</custom-button>
+                    <custom-button type="url" href="#"
+                        style-config="background-color: transparent; padding: 1rem 2rem; border-radius: 100px; color: white;"
+                        class="border border-[#4A5567] rounded-[100px]">Watch video</custom-button>
+                </div>
+            </div>
+            <div id="media-section"
+                class="relative w-[110%] md:w-[80%] h-[50%] bg-black rounded-[32px] outline outline-[20px] outline-[#212B45] overflow-hidden">
+                <video id="media-video" src="https://www.w3schools.com/html/mov_bbb.mp4"
+                    class="w-full h-full object-cover"></video>
+            </div>
+            <div id="video-modal"
+                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 hidden z-50">
+                <div class="relative w-[80%] h-[80%] bg-black rounded-lg overflow-hidden min-w-[375px]">
+                    <video id="popup-video" src="https://www.w3schools.com/html/mov_bbb.mp4" controls
+                        class="w-full h-full object-cover"></video>
+                    <button id="close-modal" class="absolute top-2 right-2 text-white text-xl font-bold">X</button>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main id="main" class="lg:relative md:relative md:z-50 lg:z-50">
+        <section id="mutual-choice"
+            class="h-[100vh] md:h-[100vh] lg:h-[50vh] w-[100%] py-[10vh] px-[5%] flex justify-between items-center relative z-1 flex-wrap bg-[#FFFFFF]">
+            <div id="mutual-choice-static-section"
+                class="w-[100%] lg:w-[15%] md:w-[100%] h-[20%] lg:h-[100%] lg:flex block flex-wrap flex-col justify-between">
+                <div id="mutual-choice-header" class="text-[#67686E]">
+                    <h2 class="inter-medium text-[14px]">MUTUAL CHOICE</h2>
+                </div>
+                <div id="mutual-choice-subheader" class="text-[#26262B] text-left">
+                    <h3 class="plus-jakarta-sans-semibold rp-font">
+                        Skill up, stand out
+                    </h3>
+                </div>
+                <div class="mutual-choice-button hidden md:hidden lg:block text-[16px] inter-regular">
+                    <custom-button type="url" href="#" style-config="background-color: white; color: #344054;"
+                        class="border border-[#4A5567] px-[32px] py-[16px] rounded-[100px]">See all</custom-button>
+                </div>
+            </div>
+
+            <div id="mutual-choice-dynamic-section"
+                class="w-[100%] md:w-[100%] lg:w-[65%] h-[70%] md:h-[70%] lg:h-[100%] flex flex-wrap justify-between lg:items-center flex-col lg:flex-row">
+                <div
+                    class="mutual-choice-card lg:w-[46%] w-[100%] h-[48%] lg:h-[100%] bg-[#FFFFFF] rounded-[16px] flex flex-wrap flex-col md:flex-row lg:flex-row justify-between items-start outline outline-[#D9D9DB] outline-[1px] p-[2%]">
+                    <div
+                        class="h-[20%] aspect-square bg-[#F8F9FA] rounded-full outline outline-[#D9D9DB] outline-[1px] p-[12px]">
+                        <img class="w-[100%] h-[100%]" src="../statics/img/core/icons/mutualChoices/design.svg" alt=""
+                            srcset="">
+                    </div>
+                    <div class="mutual-choice-card-text w-[100%] h-[50%]">
+                        <h4 class="mutual-choice-card-header inter-medium text-[20px] text-[#01030E]">
+                            Design
+                        </h4>
+                        <p class="mutual-choice-card-description inter-regular text-[14px] text-[#4E4F57] line-clamp-2">
+                            Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit
+                            Korem ipsum dolor sit amet
+                        </p>
+                    </div>
+                    <div class="mutual-choice-button w-[100%] h-[10%] lg:mb-0 md:mb-0 mb-[12px]">
+
+                        <custom-button type="url" href="#" style-config="background-color: white; color: #344054;"
+                            class="border border-[#D9D9DB] px-[16px] py-[12px] rounded-[100px]">Apply
+                            Now</custom-button>
+
+                    </div>
+
+                </div>
+                <div
+                    class="mutual-choice-card lg:w-[46%] w-[100%] h-[48%] lg:h-[100%] bg-[#FFFFFF] rounded-[16px] flex flex-wrap flex-col md:flex-row lg:flex-row justify-between items-start outline outline-[#D9D9DB] outline-[1px] p-[2%]">
+                    <div
+                        class="h-[20%] aspect-square bg-[#F8F9FA] rounded-full outline outline-[#D9D9DB] outline-[1px] p-[12px]">
+                        <img class="w-[100%] h-[100%]" src="../statics/img/core/icons/mutualChoices/design.svg" alt=""
+                            srcset="">
+                    </div>
+                    <div class="mutual-choice-card-text w-[100%] h-[50%]">
+                        <h4 class="mutual-choice-card-header inter-medium text-[20px] text-[#01030E]">
+                            Design
+                        </h4>
+                        <p class="mutual-choice-card-description inter-regular text-[14px] text-[#4E4F57] line-clamp-2">
+                            Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit
+                            Korem ipsum dolor sit amet
+                        </p>
+                    </div>
+                    <div class="mutual-choice-button w-[100%] h-[10%] lg:mb-0 md:mb-0 mb-[12px]">
+
+                        <custom-button type="url" href="#" style-config="background-color: white; color: #344054;"
+                            class="border border-[#D9D9DB] px-[16px] py-[12px] rounded-[100px]">Apply
+                            Now</custom-button>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div id="mc_see_all_section"
+                class="see_all_section flex lg:hidden w-[100%] h-[10vh] justify-center items-center">
+                <custom-button type="url" href="#" style-config="background-color: white; color: #344054;"
+                    class="border border-[#D9D9DB] px-[16px] py-[12px] rounded-[100px] w-[100%] text-center">Apply
+                    Now</custom-button>
+            </div>
+
+
+            <!-- <div class="lg:w-[50%] w-[100%] lg:h-[90%] h-[24%]" style="background: red;">
+      
+    </div>
+    <div class="lg:block md:block hidden flex justify-center items-center"
+      style="width: 50%; height: 10%; background: green;">
+      <custom-button type="url" href="#" style-config="background-color: white; color: #344054; margin: auto;"
+        class="border border-[#D9D9DB] px-[16px] py-[12px] rounded-[100px]">Apply
+        Now</custom-button>
+    </div>
+    <div style="width: 100%; height: 68%; background: blue;">
+      <div style="width: 100%; height: 48%; background: black;"></div>
+      <div style="width: 100%; height: 48%; background: black; margin-top: 4%;"></div>
+    </div>
+    <div class="lg:hidden md:hidden flex justify-center items-center"
+      style="width: 100%; height: 8%; background: green;">
+      <custom-button type="url" href="#" style-config="background-color: white; color: #344054; margin: auto;"
+        class="border border-[#D9D9DB] px-[16px] py-[12px] rounded-[100px]">Apply
+        Now</custom-button>
+    </div> -->
+        </section>
+
+        <section id="turing-advantage" class="w-[100%] py-[5vw] px-[5%] bg-[#080d20]">
+            <div id="turing-advantage-header-and-see-all-container" class="w-[100%] flex flex-nowrap">
+                <div id="advantage-header" class="w-[100%] flex flex-wrap justify-between items-center">
+                    <div id="advantage-main-header" class="w-[100%]">
+                        <h2 class="inter-medium text-[14px] text-[#A2A2A2]">TURING ADVANTAGE</h2>
+                    </div>
+                    <div id="advantage-subheader" class="lg:w-[50%] md:w-[80%] w-[100%] line-clamp-3">
+                        <h3 class="plus-jakarta-sans-medium text-white rp-font">
+                            <span class="text-[#2BA6EB]">Turing Academy</span> offers a fun
+                            & accessible learning experience.
+                        </h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="turing-advantages-container"
+                class="w-full h-auto pr-[5%] py-[5%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[32px] md:gap-[72px]">
+            </div>
+
+            <div id="load-more-container" class="text-center mt-6 hidden">
+                <button id="load-more-btn" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md">
+                    Load More
+                </button>
+            </div>
+
+            <div
+                class="relative lg:w-[60vw] w-[100vw] h-[25vh] flex justify-center items-center z-10 mx-auto mt-[20%] md:mt-[56px]">
+                <video src="https://www.w3schools.com/html/mov_bbb.mp4" class="w-full h-full object-cover"></video>
+
+
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center rounded-[8px] transition-all duration-300 hover:w-full hover:h-full">
+                    <h2 class="text-white opacity-25 montserrat-black font-black tracking-widest"
+                        style="font-size: clamp(52px, calc((100vw - 375px) / (1440 - 375) * (195 - 32) + 32px), 195px);">
+                        COMMUNITY
+                    </h2>
+                </div>
+            </div>
+
+
+            <div class="mt-[80px] text-center">
+                <p class="mb-4 inter-regular text-[14px] md:text-[16px] lg:text-[18px] text-[#CDD5E0]">
+                    Learn highly demanded skills through practical courses, created by trusted industry professionals,
+                    that focus on real-world applications.
+
+                </p>
+
+            </div>
+
+            <div id="content-buttons" class="w-[100%] flex justify-center gap-4 mt-[56px]">
+                <custom-button type="url" href="#"
+                    style-config="background-color: transparent; padding: 1rem 2rem; border-radius: 100px; color: white;"
+                    class="border border-[#4A5567] rounded-[100px]">Explore Us</custom-button>
+            </div>
+
+
+
+        </section>
+
+        <script>
+            const communityItems = [
+                { title: "Community first", description: "Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit Korem ipsum dolor sit amet" },
+                { title: "Always authentic", description: "Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit Korem ipsum dolor sit amet" },
+                { title: "Celebrate diversity", description: "Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit Korem ipsum dolor sit amet" },
+                { title: "Stay sustainable", description: "Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit Korem ipsum dolor sit amet" },
+                { title: "Positive Energy", description: "Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit Korem ipsum dolor sit amet" },
+                { title: "Waves before web", description: "Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit Korem ipsum dolor sit amet" },
+                { title: "Teach live", description: "Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit Korem ipsum dolor sit amet" },
+                { title: "Learn-by-doing", description: "Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit Korem ipsum dolor sit amet" },
+            ];
+
+            const advantagesContainer = document.getElementById('turing-advantages-container');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            const loadMoreContainer = document.getElementById('load-more-container');
+            let showMore = false;
+
+            function loadCards(limit) {
+                advantagesContainer.innerHTML = '';
+                const cardsToShow = limit !== undefined ? limit : communityItems.length;
+                for (let i = 0; i < cardsToShow; i++) {
+                    const item = communityItems[i];
+                    const card = document.createElement('div');
+                    card.className = 'overflow-hidden flex flex-col';
+
+                    const cardHeader = document.createElement('div');
+                    cardHeader.className = 'flex items-center py-4';
+
+                    const cardTitle = document.createElement('h3');
+                    cardTitle.className = 'inter-medium text-[20px] text-[#FFFFFF]';
+                    cardTitle.innerHTML = `${item.title}`;
+
+                    const cardContent = document.createElement('div');
+                    cardContent.className = 'flex-grow text-[#A2A1A4] inter-regular text-[14px] ';
+                    cardContent.innerText = item.description;
+
+                    cardHeader.appendChild(cardTitle);
+                    card.appendChild(cardHeader);
+                    card.appendChild(cardContent);
+                    advantagesContainer.appendChild(card);
+                }
+            }
+
+            loadMoreBtn.addEventListener('click', function () {
+                showMore = !showMore;
+                loadCards(showMore ? communityItems.length : 4);
+                loadMoreBtn.textContent = showMore ? 'Less More' : 'Load More';
+            });
+
+            function checkScreenSize() {
+                const screenWidth = window.innerWidth;
+
+                if (screenWidth <= 768) {
+                    loadCards(4);
+                    loadMoreContainer.classList.remove('hidden');
+                } else {
+                    loadCards();
+                    loadMoreContainer.classList.add('hidden');
+                }
+            }
+
+            checkScreenSize();
+
+            window.addEventListener('resize', checkScreenSize);
+
+        </script>
+
+        <section id="our-graduates" class="w-[100%] px-[5%] py-[5vw] h-[100vh] bg-white flex flex-col justify-between">
+            <div id="our-graduates-header-and-see-all-container"
+                class="w-[100%] flex flex-nowrap justify-between items-center">
+                <div id="our-graduates-header"
+                    class="w-[80%] md:w-[50%] lg:w-[35%] flex flex-wrap justify-between items-center">
+                    <div id="our-graduates-main-header">
+                        <h2 class="inter-medium text-[14px] text-[#A2A2A2]">OUR GRADUATES</h2>
+                    </div>
+                    <div id="our-graduates-subheader">
+                        <h3 class="plus-jakarta-sans-medium rp-font text-black">
+                            Accelerate your career
+                            in <span class="text-[#2BA6EB]">Turing Academy</span>
+                        </h3>
+                    </div>
+                </div>
+
+                <div id="our-graduates-see-all" class="hidden md:flex w-[50%] justify-end items-center">
+                    <custom-button type="url" href="#" style-config="color: #000000;"
+                        class="border border-[#4A5567] px-[32px] py-[16px] rounded-[100px]">See all</custom-button>
+                </div>
+            </div>
+
+            <div id="our-graduates-cards-container"
+                class="w-[100%] h-[70%] overflow-x-auto flex flex-nowrap space-x-[16px] items-center justify-between mt-4">
+
+                <div
+                    class="h-[100%] lg:w-[20%] w-40% p-[16px] rounded-[16px] flex flex-wrap justify-center items-center border border-[#D9D9DB] bg-[#FFFFFF] min-w-[284px]">
+                    <div class="graduate-video-container relative h-[80%] w-[100%] rounded-[10px] bg-blue-600">
+                        <video src="https://www.w3schools.com/html/mov_bbb.mp4"
+                            class="w-full h-full object-cover rounded-[10px]"></video>
+                        <div class="play-icon absolute inset-0 flex justify-center items-center cursor-pointer">
+                            <img src="../statics/img/core/icons/play.png" alt="Play Icon" class="h-12 w-12">
+                        </div>
+                        <div class="mute-icon absolute bottom-2 right-2 cursor-pointer">
+                            <img src="../statics/img/core/icons/voice-mute.png" alt="Mute Icon" class="h-6 w-6">
+                        </div>
+                    </div>
+                    <div class="h-[18%] w-[100%] flex flex-col justify-between">
+                        <div class="w-[100%] py-[4px]">
+                            <span
+                                class="inter-regular text-[14px] px-[10px] py-[6px] border border-[#D9D9DB] rounded-[8px] bg-[#F8F9FA] text-[#344054]">UX/UI</span>
+                        </div>
+                        <div class="inter-medium text-[18px] w-[100%]">
+                            <h5>Elmira Nəcəfli</h5>
+                        </div>
+                        <div class="inter-regular text-[12px] text-[#4E4F57] w-[100%]">UX/UI designer at Spotify
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="h-[100%] lg:w-[20%] w-40% p-[16px] rounded-[16px] flex flex-wrap justify-center items-center border border-[#D9D9DB] bg-[#FFFFFF] min-w-[284px]">
+                    <div class="graduate-video-container relative h-[80%] w-[100%] rounded-[10px] bg-blue-600">
+                        <video src="https://www.w3schools.com/html/mov_bbb.mp4"
+                            class="w-full h-full object-cover rounded-[10px]"></video>
+                        <div class="play-icon absolute inset-0 flex justify-center items-center cursor-pointer">
+                            <img src="../statics/img/core/icons/play.png" alt="Play Icon" class="h-12 w-12">
+                        </div>
+                        <div class="mute-icon absolute bottom-2 right-2 cursor-pointer">
+                            <img src="../statics/img/core/icons/voice-mute.png" alt="Mute Icon" class="h-6 w-6">
+                        </div>
+                    </div>
+                    <div class="h-[18%] w-[100%] flex flex-col justify-between">
+                        <div class="w-[100%] py-[4px]">
+                            <span
+                                class="inter-regular text-[14px] px-[10px] py-[6px] border border-[#D9D9DB] rounded-[8px] bg-[#F8F9FA] text-[#344054]">UX/UI</span>
+                        </div>
+                        <div class="inter-medium text-[18px] w-[100%]">
+                            <h5>Elmira Nəcəfli</h5>
+                        </div>
+                        <div class="inter-regular text-[12px] text-[#4E4F57] w-[100%]">UX/UI designer at Spotify
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="h-[100%] lg:w-[20%] w-40% p-[16px] rounded-[16px] flex flex-wrap justify-center items-center border border-[#D9D9DB] bg-[#FFFFFF] min-w-[284px]">
+                    <div class="graduate-video-container relative h-[80%] w-[100%] rounded-[10px] bg-blue-600">
+                        <video src="https://www.w3schools.com/html/mov_bbb.mp4"
+                            class="w-full h-full object-cover rounded-[10px]"></video>
+                        <div class="play-icon absolute inset-0 flex justify-center items-center cursor-pointer">
+                            <img src="../statics/img/core/icons/play.png" alt="Play Icon" class="h-12 w-12">
+                        </div>
+                        <div class="mute-icon absolute bottom-2 right-2 cursor-pointer">
+                            <img src="../statics/img/core/icons/voice-mute.png" alt="Mute Icon" class="h-6 w-6">
+                        </div>
+                    </div>
+                    <div class="h-[18%] w-[100%] flex flex-col justify-between">
+                        <div class="w-[100%] py-[4px]">
+                            <span
+                                class="inter-regular text-[14px] px-[10px] py-[6px] border border-[#D9D9DB] rounded-[8px] bg-[#F8F9FA] text-[#344054]">UX/UI</span>
+                        </div>
+                        <div class="inter-medium text-[18px] w-[100%]">
+                            <h5>Elmira Nəcəfli</h5>
+                        </div>
+                        <div class="inter-regular text-[12px] text-[#4E4F57] w-[100%]">UX/UI designer at Spotify
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="h-[100%] lg:w-[20%] w-40% p-[16px] rounded-[16px] flex flex-wrap justify-center items-center border border-[#D9D9DB] bg-[#FFFFFF] min-w-[284px]">
+                    <div class="graduate-video-container relative h-[80%] w-[100%] rounded-[10px] bg-blue-600">
+                        <video src="https://www.w3schools.com/html/mov_bbb.mp4"
+                            class="w-full h-full object-cover rounded-[10px]"></video>
+                        <div class="play-icon absolute inset-0 flex justify-center items-center cursor-pointer">
+                            <img src="../statics/img/core/icons/play.png" alt="Play Icon" class="h-12 w-12">
+                        </div>
+                        <div class="mute-icon absolute bottom-2 right-2 cursor-pointer">
+                            <img src="../statics/img/core/icons/voice-mute.png" alt="Mute Icon" class="h-6 w-6">
+                        </div>
+                    </div>
+                    <div class="h-[18%] w-[100%] flex flex-col justify-between">
+                        <div class="w-[100%] py-[4px]">
+                            <span
+                                class="inter-regular text-[14px] px-[10px] py-[6px] border border-[#D9D9DB] rounded-[8px] bg-[#F8F9FA] text-[#344054]">UX/UI</span>
+                        </div>
+                        <div class="inter-medium text-[18px] w-[100%]">
+                            <h5>Elmira Nəcəfli</h5>
+                        </div>
+                        <div class="inter-regular text-[12px] text-[#4E4F57] w-[100%]">UX/UI designer at Spotify
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+            <div class="block md:hidden w-full flex justify-center mt-4">
+                <custom-button type="url" href="#" style-config="color: #000000;"
+                    class="border border-[#4A5567] px-[32px] py-[16px] rounded-[100px] w-[100%] text-center">See
+                    all</custom-button>
+            </div>
+        </section>
+
+        <section id="events" class="w-[100%] lg:h-[100vh] py-[5vw] px-[5%] flex flex-col justify-between bg-[#080d20]">
+            <div id="events-header-and-see-all-container" class="w-[100%] flex flex-nowrap">
+                <div id="events-header" class="w-[50%] flex flex-wrap justify-between items-center">
+                    <div id="events-main-header" class="w-[100%]">
+                        <h2 class="inter-medium text-[14px] text-[#A2A2A2]">EVENTS</h2>
+                    </div>
+                    <div id="events-subheader" class="w-100%">
+                        <h3 class="plus-jakarta-sans-medium rp-font text-white">Upcoming Events</h3>
+                    </div>
+                </div>
+                <div id="events-see-all" class="w-[50%] flex justify-end items-center">
+                    <custom-button type="url" href="#" style-config="color: #FFFFFF;" class="border border-[#4A5567] px-[32px] py-[16px] rounded-[100px] 
+                    hidden lg:block">See all</custom-button>
+                </div>
+            </div>
+            <div id="events-cards-container"
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full h-[70%] p-4">
+
+                <div
+                    class="bg-[#0D1224] p-6 rounded-[16px] p-[16px] flex flex-wrap items-center border border-[#4A5567]">
+                    <div class="w-[100%] py-[4px]">
+                        <span
+                            class="inter-regular text-[14px] px-[10px] py-[6px] border border-[#4A5567] rounded-[8px] bg-transparent text-[#B5B6BE] h-[10%]">
+                            UX/UI Dizayn
+                        </span>
+                    </div>
+                    <div class="inter-medium text-[24px] w-[100%] py-[8px] text-[#FFFFFF]">
+                        <h5>III Design Competition</h5>
+                        <p class="inter-regular text-[14px] text-[#A2A1A4]">A lot happened this month. Take a look
+                            at
+                            what's coming..</p>
+                    </div>
+                    <div class="w-[100%] flex justify-between items-end text-left">
+                        <div class="w-[60%] flex items-end flex-wrap">
+                            <h6 class="inter-medium text-[14px] text-[#FFFFFF] block w-[100%]">Qonaqlar:</h6>
+                            <p class="inter-medium text-[14px] text-[#A2A1A4] block w-[100%]">Togrul Samed, Zumrad
+                                Murado.</p>
+                        </div>
+
+                        <div class="w-[30%] text-right">
+                            <h6 class="inter-medium text-[14px] text-[#FFFFFF] block w-[100%]">Ödənişsiz</h6>
+                            <p class="inter-medium text-[14px] text-[#A2A1A4] block w-[100%]">Apr 17, 2024</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#0D1224] p-6 rounded-[16px] p-[16px] flex flex-wrap items-center border border-[#4A5567]">
+                    <div class="w-[100%] py-[4px]">
+                        <span
+                            class="inter-regular text-[14px] px-[10px] py-[6px] border border-[#4A5567] rounded-[8px] bg-transparent text-[#B5B6BE] h-[10%]">
+                            UX/UI Dizayn
+                        </span>
+                    </div>
+                    <div class="inter-medium text-[24px] w-[100%] py-[8px] text-[#FFFFFF]">
+                        <h5>III Design Competition</h5>
+                        <p class="inter-regular text-[14px] text-[#A2A1A4]">A lot happened this month. Take a look
+                            at
+                            what's coming..</p>
+                    </div>
+                    <div class="w-[100%] flex justify-between items-end text-left">
+                        <div class="w-[60%] flex items-end flex-wrap">
+                            <h6 class="inter-medium text-[14px] text-[#FFFFFF] block w-[100%]">Qonaqlar:</h6>
+                            <p class="inter-medium text-[14px] text-[#A2A1A4] block w-[100%]">Togrul Samed, Zumrad
+                                Murado.</p>
+                        </div>
+
+                        <div class="w-[30%] text-right">
+                            <h6 class="inter-medium text-[14px] text-[#FFFFFF] block w-[100%]">Ödənişsiz</h6>
+                            <p class="inter-medium text-[14px] text-[#A2A1A4] block w-[100%]">Apr 17, 2024</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#0D1224] p-6 rounded-[16px] p-[16px] flex flex-wrap items-center border border-[#4A5567]">
+                    <div class="w-[100%] py-[4px]">
+                        <span
+                            class="inter-regular text-[14px] px-[10px] py-[6px] border border-[#4A5567] rounded-[8px] bg-transparent text-[#B5B6BE] h-[10%]">
+                            UX/UI Dizayn
+                        </span>
+                    </div>
+                    <div class="inter-medium text-[24px] w-[100%] py-[8px] text-[#FFFFFF]">
+                        <h5>III Design Competition</h5>
+                        <p class="inter-regular text-[14px] text-[#A2A1A4]">A lot happened this month. Take a look
+                            at
+                            what's coming..</p>
+                    </div>
+                    <div class="w-[100%] flex justify-between items-end text-left">
+                        <div class="w-[60%] flex items-end flex-wrap">
+                            <h6 class="inter-medium text-[14px] text-[#FFFFFF] block w-[100%]">Qonaqlar:</h6>
+                            <p class="inter-medium text-[14px] text-[#A2A1A4] block w-[100%]">Togrul Samed, Zumrad
+                                Murado.</p>
+                        </div>
+
+                        <div class="w-[30%] text-right">
+                            <h6 class="inter-medium text-[14px] text-[#FFFFFF] block w-[100%]">Ödənişsiz</h6>
+                            <p class="inter-medium text-[14px] text-[#A2A1A4] block w-[100%]">Apr 17, 2024</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#0D1224] p-6 rounded-[16px] p-[16px] flex flex-wrap items-center border border-[#4A5567]">
+                    <div class="w-[100%] py-[4px]">
+                        <span
+                            class="inter-regular text-[14px] px-[10px] py-[6px] border border-[#4A5567] rounded-[8px] bg-transparent text-[#B5B6BE] h-[10%]">
+                            UX/UI Dizayn
+                        </span>
+                    </div>
+                    <div class="inter-medium text-[24px] w-[100%] py-[8px] text-[#FFFFFF]">
+                        <h5>III Design Competition</h5>
+                        <p class="inter-regular text-[14px] text-[#A2A1A4]">A lot happened this month. Take a look
+                            at
+                            what's coming..</p>
+                    </div>
+                    <div class="w-[100%] flex justify-between items-end text-left">
+                        <div class="w-[60%] flex items-end flex-wrap">
+                            <h6 class="inter-medium text-[14px] text-[#FFFFFF] block w-[100%]">Qonaqlar:</h6>
+                            <p class="inter-medium text-[14px] text-[#A2A1A4] block w-[100%]">Togrul Samed, Zumrad
+                                Murado.</p>
+                        </div>
+
+                        <div class="w-[30%] text-right">
+                            <h6 class="inter-medium text-[14px] text-[#FFFFFF] block w-[100%]">Ödənişsiz</h6>
+                            <p class="inter-medium text-[14px] text-[#A2A1A4] block w-[100%]">Apr 17, 2024</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#0D1224] p-6 rounded-[16px] p-[16px] flex flex-wrap items-center border border-[#4A5567]">
+                    <div class="w-[100%] py-[4px]">
+                        <span
+                            class="inter-regular text-[14px] px-[10px] py-[6px] border border-[#4A5567] rounded-[8px] bg-transparent text-[#B5B6BE] h-[10%]">
+                            UX/UI Dizayn
+                        </span>
+                    </div>
+                    <div class="inter-medium text-[24px] w-[100%] py-[8px] text-[#FFFFFF]">
+                        <h5>III Design Competition</h5>
+                        <p class="inter-regular text-[14px] text-[#A2A1A4]">A lot happened this month. Take a look
+                            at
+                            what's coming..</p>
+                    </div>
+                    <div class="w-[100%] flex justify-between items-end text-left">
+                        <div class="w-[60%] flex items-end flex-wrap">
+                            <h6 class="inter-medium text-[14px] text-[#FFFFFF] block w-[100%]">Qonaqlar:</h6>
+                            <p class="inter-medium text-[14px] text-[#A2A1A4] block w-[100%]">Togrul Samed, Zumrad
+                                Murado.</p>
+                        </div>
+
+                        <div class="w-[30%] text-right">
+                            <h6 class="inter-medium text-[14px] text-[#FFFFFF] block w-[100%]">Ödənişsiz</h6>
+                            <p class="inter-medium text-[14px] text-[#A2A1A4] block w-[100%]">Apr 17, 2024</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#0D1224] p-6 rounded-[16px] p-[16px] flex flex-wrap items-center border border-[#4A5567]">
+                    <div class="w-[100%] py-[4px]">
+                        <span
+                            class="inter-regular text-[14px] px-[10px] py-[6px] border border-[#4A5567] rounded-[8px] bg-transparent text-[#B5B6BE] h-[10%]">
+                            UX/UI Dizayn
+                        </span>
+                    </div>
+                    <div class="inter-medium text-[24px] w-[100%] py-[8px] text-[#FFFFFF]">
+                        <h5>III Design Competition</h5>
+                        <p class="inter-regular text-[14px] text-[#A2A1A4]">A lot happened this month. Take a look
+                            at
+                            what's coming..</p>
+                    </div>
+                    <div class="w-[100%] flex justify-between items-end text-left">
+                        <div class="w-[60%] flex items-end flex-wrap">
+                            <h6 class="inter-medium text-[14px] text-[#FFFFFF] block w-[100%]">Qonaqlar:</h6>
+                            <p class="inter-medium text-[14px] text-[#A2A1A4] block w-[100%]">Togrul Samed, Zumrad
+                                Murado.</p>
+                        </div>
+
+                        <div class="w-[30%] text-right">
+                            <h6 class="inter-medium text-[14px] text-[#FFFFFF] block w-[100%]">Ödənişsiz</h6>
+                            <p class="inter-medium text-[14px] text-[#A2A1A4] block w-[100%]">Apr 17, 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="block md:hidden w-full flex justify-center mt-4">
+                <custom-button type="url" href="#" style-config="color: #FFFFFF;"
+                    class="border border-[#4A5567] px-[32px] py-[16px] rounded-[100px] w-[100%] text-center">Load
+                    More</custom-button>
+            </div>
+        </section>
+
+
+
+
+        <section id="partners-and-forms"
+            class="w-[100%] py-[5vw] px-[5%] flex flex-col justify-between bg-[#FFFFFF] z-10 relative">
+            <div id="partners-and-forms-header-container" class="w-[100%] flex flex-nowrap">
+                <div id="partners-and-forms-header" class="w-[100%] flex flex-wrap justify-between items-center">
+                    <div id="partners-and-forms-main-header" class="w-[100%]">
+                        <h2 class="inter-medium text-[14px] text-[#67686E]">PARTNERS</h2>
+                    </div>
+                    <div id="partners-and-forms-subheader" class="w-[100%]">
+                        <h3 class="plus-jakarta-sans-medium  rp-font text-[#000000]">
+                            Together Strong
+                        </h3>
+                    </div>
+                </div>
+
+            </div>
+            <div class="partner-container w-full overflow-hidden relative mt-[5%] mb-[5%]">
+                <ul class="marquee-content flex list-none animate-scrolling space-x-4">
+                    <!-- dynamic -->
+                </ul>
+                <div class="pointer-events-none bg-gradient-to-r from-white via-transparent to-white absolute inset-0">
+                </div>
+            </div>
+            <style>
+                @keyframes scrolling {
+                    0% {
+                        transform: translateX(0);
+                    }
+
+                    100% {
+                        transform: translateX(calc(-90%));
+                    }
+                }
+
+                .animate-scrolling {
+                    animation: scrolling 36s linear infinite;
+                }
+            </style>
+            <div class="w-full flex flex-col lg:flex-row gap-8 justify-center items-center">
+                <!-- Form -->
+                <div
+                    class="partner-form w-full lg:w-[70%] p-[24px] bg-[#FFFFFF] rounded-[16px] border border-[#D9D9DB] lg:h-[50vh]">
+                    <div id="partners-and-forms-main-header" class="w-[100%]">
+                        <h2 class="inter-medium text-[14px] text-[#67686E]">PARTNERS</h2>
+                    </div>
+                    <div id="partners-and-forms-subheader" class="w-[100%]">
+                        <h3 class="plus-jakarta-sans-medium  rp-font text-[#000000]">
+                            Together Strong
+                        </h3>
+                        <p class="inter-regular text-[14px] text-[#171716] mt-[12px]">
+                            You can select your area of specialization below (more than one selection is possible)
+                        </p>
+                    </div>
+
+
+                    <!-- Specialization options -->
+                    <div id="specialization-buttons" class="flex flex-wrap gap-4 mb-6 mt-[32px]">
+                        <button
+                            class="px-4 py-2 bg-[#F8F9FA] text-black rounded-[8px] specialization-button border border-[#D9D9DB]"
+                            data-value="UX/UI Design">UX/UI Design</button>
+                        <button
+                            class="px-4 py-2 bg-[#F8F9FA] text-black rounded-[8px] specialization-button border border-[#D9D9DB]"
+                            data-value="Back-end Development">Back-end Development</button>
+                        <button
+                            class="px-4 py-2 bg-[#F8F9FA] text-black rounded-[8px] specialization-button border border-[#D9D9DB]"
+                            data-value="Front-end Development">Front-end Development</button>
+                        <button
+                            class="px-4 py-2 bg-[#F8F9FA] text-black rounded-[8px] specialization-button border border-[#D9D9DB]"
+                            data-value="Computer Science">Computer Science</button>
+                    </div>
+
+                    <!-- Form inputs -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-[24px] mb-6 mt-[32px]">
+                        <input type="text" placeholder="Name"
+                            class="p-[16px] border border-[#d9d9db] rounded-[8px] inter-regular text-[14px]">
+                        <input type="text" placeholder="Surname"
+                            class="p-[16px] border border-[#d9d9db] rounded-[8px] inter-regular text-[14px]">
+                        <input type="email" placeholder="example@gmail.com"
+                            class="p-[16px] border border-[#d9d9db] rounded-[8px] inter-regular text-[14px]">
+                        <input type="tel" placeholder="+994 00 000 00 00"
+                            class="p-[16px] border border-[#d9d9db] rounded-[8px] inter-regular text-[14px]">
+                    </div>
+
+                    <!-- Submit button -->
+                    <button class="px-6 py-3 bg-black text-white rounded-full">Apply now</button>
+                </div>
+
+                <!-- Test section -->
+                <div
+                    class="partner-test-box w-full lg:w-[30%] flex flex-col items-center justify-between p-[24px] bg-[#FFFFFF] rounded-[16px] border border-[#D9D9DB] lg:h-[50vh]">
+                    <img src="../statics/img/core/test-3d.png" alt="Test" class="w-[80%] h-[50%] mb-4 hidden lg:block">
+                    <h4 class="inter-medium text-[20px] text-left">Help to choose</h4>
+                    <p class="inter-regular text-[14px] text-left"> 10 suallıq sorğumuza qatıl, potensialına uyğun
+                        ixtisası daha sürətli
+                        öyrən.
+                    </p>
+                    <div class="w-[100%] mt-4">
+                        <button class="px-6 py-3 bg-black text-white rounded-full">Start test</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <footer
+        class="w-[100%] lg:h-[100vh] text-white flex flex-col items-center justify-between bottom-0 bg-[#080d20] lg:z-[-50] lg: fixed">
+        <div class="md:py-[5vh] py-[0] px-[5%] w-full flex flex-wrap md:justify-between flex-wrap">
+            <!-- Logo and Description -->
+            <div class="space-y-8 flex flex-col items-start w-full md:w-1/3 mt-[56px]">
+                <div class="md:p-0 py-[44px]"><img src="../statics/img/core/logo/white-full.png"
+                        alt="Turing Academy Logo"></div>
+                <p
+                    class="text-white logo-text w-80 inter-regular text-[16px] mt-[32px] text-[#CDD5E0] md:inline hidden">
+                    Learn highly
+                    demanded skills through practical courses, created by trusted industry professionals.</p>
+                <div class="grid grid-cols-3 gap-2 mt-4 hidden md:grid">
+                    <!-- İlk Sıra -->
+                    <a href="https://linkedin.com"
+                        class="w-10 h-10 border flex justify-center items-center rounded-full bg-[#FFFFFF] bg-opacity-[0.04] border-solid border-opacity-[0.12] border-[#FFFFFF] pageNotFoundPopup"
+                        data-popup="qxwsc">
+                        <img src="../statics/img/core/icons/social/instagram.png" alt="instagram Icon" class="w-5 h-5">
+                    </a>
+                    <a href="https://linkedin.com"
+                        class="w-10 h-10 border flex justify-center items-center rounded-full bg-[#FFFFFF] bg-opacity-[0.04] border-solid border-opacity-[0.12] border-[#FFFFFF] pageNotFoundPopup"
+                        data-popup="qxwsc">
+                        <img src="../statics/img/core/icons/social/facebook.png" alt="facebook Icon" class="w-5 h-5">
+                    </a>
+                    <a href="https://linkedin.com"
+                        class="w-10 h-10 border flex justify-center items-center rounded-full bg-[#FFFFFF] bg-opacity-[0.04] border-solid border-opacity-[0.12] border-[#FFFFFF] pageNotFoundPopup"
+                        data-popup="qxwsc">
+                        <img src="../statics/img/core/icons/social/linkedin.png" alt="linkedin Icon" class="w-5 h-5">
+                    </a>
+
+                    <!-- İkinci Sıra -->
+                    <a href="https://linkedin.com"
+                        class="w-10 h-10 border flex justify-center items-center rounded-full bg-[#FFFFFF] bg-opacity-[0.04] border-solid border-opacity-[0.12] border-[#FFFFFF] pageNotFoundPopup"
+                        data-popup="qxwsc">
+                        <img src="../statics/img/core/icons/social/tiktok.png" alt="tiktok Icon" class="w-5 h-5">
+                    </a>
+                    <a href="https://twitter.com"
+                        class="w-10 h-10 border flex justify-center items-center rounded-full bg-[#FFFFFF] bg-opacity-[0.04] border-solid border-opacity-[0.12] border-[#FFFFFF] pageNotFoundPopup"
+                        data-popup="qxwsc">
+                        <img src="../statics/img/core/icons/social/whatsapp.png" alt="whatsapp Icon" class="w-5 h-5">
+                    </a>
+                    <a href="https://facebook.com"
+                        class="w-10 h-10 border flex justify-center items-center rounded-full bg-[#FFFFFF] bg-opacity-[0.04] border-solid border-opacity-[0.12] border-[#FFFFFF] pageNotFoundPopup"
+                        data-popup="qxwsc">
+                        <img src="../statics/img/core/icons/social/youtube.png" alt="youtube Icon" class="w-5 h-5">
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Upcoming Events -->
+            <div class="flex flex-col w-full md:w-1/6 mt-[56px]">
+                <h2 class="text-[20px] inter-medium text-[#FFFFFF]">Upcoming Events</h2>
+                <ul class="inter-medium text-[16px] md:mt-[32px] mt-[24px] space-y-4">
+                    <li><a href="#" class="underline pageNotFoundPopup" data-popup="qxwsc">III Design Competition</a>
+                    </li>
+                    <li><a href="#" class="underline pageNotFoundPopup" data-popup="qxwsc">II Hackathon</a></li>
+                    <li><a href="#" class="underline pageNotFoundPopup" data-popup="qxwsc">IV Design Competition</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Academy -->
+            <div class="flex flex-col w-full md:w-1/6 mt-[56px]">
+                <h2 class="text-[20px] inter-medium text-[#FFFFFF]">Academy</h2>
+                <ul class="inter-regular text-[16px] md:mt-[32px] mt-[24px] space-y-4">
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">About us</a></li>
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">Community</a></li>
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">Instructors</a></li>
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">Graduates</a></li>
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">Partners</a></li>
+                </ul>
+            </div>
+
+            <!-- Events -->
+            <div class="flex flex-col w-full md:w-1/6 mt-[56px]">
+                <h2 class="text-[20px] inter-medium text-[#FFFFFF]">Events</h2>
+                <ul class="inter-regular text-[16px] md:mt-[32px] mt-[24px] space-y-4">
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">Seminar</a></li>
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">Workshop</a></li>
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">Hackathon</a></li>
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">Gallery</a></li>
+                </ul>
+            </div>
+
+            <!-- Fields of Study -->
+            <div class="flex flex-col w-full md:w-1/6 mt-[56px]">
+                <h2 class="text-[20px] inter-medium text-[#FFFFFF]">Fields of Study</h2>
+                <ul class="inter-regular text-[16px] md:mt-[32px] mt-[24px] space-y-4">
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">UX/UI Design</a></li>
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">Back-end Development</a>
+                    </li>
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">Front-end Development</a>
+                    </li>
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">Computer Science</a></li>
+                    <li><a href="#" class="no-underline pageNotFoundPopup" data-popup="qxwsc">Scholarship</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="flex flex-wrap gap-2 mt-[56px] lg:hidden md:hidden mx-auto">
+            <!-- Social Media Icons -->
+            <a href="https://linkedin.com"
+                class="w-10 h-10 border flex justify-center items-center rounded-full bg-[#FFFFFF] bg-opacity-[0.04] border-solid border-opacity-[0.12] border-[#FFFFFF] pageNotFoundPopup"
+                data-popup="qxwsc">
+                <img src="../statics/img/core/icons/social/instagram.png" alt="instagram Icon" class="w-5 h-5">
+            </a>
+            <a href="https://linkedin.com"
+                class="w-10 h-10 border flex justify-center items-center rounded-full bg-[#FFFFFF] bg-opacity-[0.04] border-solid border-opacity-[0.12] border-[#FFFFFF] pageNotFoundPopup"
+                data-popup="qxwsc">
+                <img src="../statics/img/core/icons/social/facebook.png" alt="facebook Icon" class="w-5 h-5">
+            </a>
+            <a href="https://linkedin.com"
+                class="w-10 h-10 border flex justify-center items-center rounded-full bg-[#FFFFFF] bg-opacity-[0.04] border-solid border-opacity-[0.12] border-[#FFFFFF] pageNotFoundPopup"
+                data-popup="qxwsc">
+                <img src="../statics/img/core/icons/social/linkedin.png" alt="linkedin Icon" class="w-5 h-5">
+            </a>
+            <a href="https://linkedin.com"
+                class="w-10 h-10 border flex justify-center items-center rounded-full bg-[#FFFFFF] bg-opacity-[0.04] border-solid border-opacity-[0.12] border-[#FFFFFF] pageNotFoundPopup"
+                data-popup="qxwsc">
+                <img src="../statics/img/core/icons/social/tiktok.png" alt="tiktok Icon" class="w-5 h-5">
+            </a>
+            <a href="https://twitter.com"
+                class="w-10 h-10 border flex justify-center items-center rounded-full bg-[#FFFFFF] bg-opacity-[0.04] border-solid border-opacity-[0.12] border-[#FFFFFF] pageNotFoundPopup"
+                data-popup="qxwsc">
+                <img src="../statics/img/core/icons/social/whatsapp.png" alt="whatsapp Icon" class="w-5 h-5">
+            </a>
+            <a href="https://facebook.com"
+                class="w-10 h-10 border flex justify-center items-center rounded-full bg-[#FFFFFF] bg-opacity-[0.04] border-solid border-opacity-[0.12] border-[#FFFFFF] pageNotFoundPopup"
+                data-popup="qxwsc">
+                <img src="../statics/img/core/icons/social/youtube.png" alt="youtube Icon" class="w-5 h-5">
+            </a>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="relative w-[100%] h-[clamp(300px, 40vw, 600px)] mt-8">
+            <div class="absolute inset-0 opacity-25 z-0">
+                <img src="../statics/img/core/biraddim.png"
+                    class="absolute object-cover w-[100%] h-[clamp(300px, 40vw, 600px)] bottom-0"
+                    alt="Background Image">
+            </div>
+            <div
+                class="relative z-10 py-[5vw] px-[5%] text-white flex items-center justify-center md:justify-between lg:justify-between w-full flex-wrap">
+                <span class="text-sm dark:text-gray-300 w-[100%] lg:w-1/2 md:w-1/2 block md:text-left text-center">©
+                    2023. All Rights Reserved.</span>
+                <span class="w-[100%] lg:w-1/2 md:w-1/2 md:text-right block text-center">Created by <a
+                        href="https://shi.studio/" class="underline">SHI Studio.</a></span>
+            </div>
+        </div>
+
+        <div class="footer-blur-box container"><img class="footer-blur"
+                src="../statics/img/core/effects/blur/footer.png"></div>
+    </footer>
+
+
+
+
+
+
+
+    <script src="../statics/js/components/buttonComponent.js"></script> <!-- JS/Buttons -->
+    <script src="../statics/js/pages/main/marquee.js"></script>
+
+    <!-- Header/Nav/Dropdown -->
+    <script>
+        const dropdownBtn = document.getElementById("dropdownBtn");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        const dropdownImg = document.getElementById("dropdownImg");
+        let isDropdownOpen = false;
+
+        dropdownBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            isDropdownOpen = !isDropdownOpen;
+            dropdownMenu.classList.toggle("hidden", !isDropdownOpen);
+            dropdownImg.src = isDropdownOpen ? "../statics/img/core/icons/up-arrow.svg" : "../statics/img/core/icons/down-arrow.svg";
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!dropdownMenu.contains(e.target) && !dropdownBtn.contains(e.target)) {
+                isDropdownOpen = false;
+                dropdownMenu.classList.add("hidden");
+                dropdownImg.src = "../statics/img/core/icons/down-arrow.svg";
+            }
+        });    
+    </script>
+
+    <!-- Header/Video -->
+    <script>
+        const video = document.getElementById('media-video');
+        const videoModal = document.getElementById('video-modal');
+        const popupVideo = document.getElementById('popup-video');
+        const closeModal = document.getElementById('close-modal');
+
+        video.addEventListener('mouseenter', () => {
+            video.play();
+        });
+
+        video.addEventListener('mouseleave', () => {
+            video.pause();
+        });
+
+        video.addEventListener('click', () => {
+            videoModal.classList.remove('hidden');
+            popupVideo.currentTime = video.currentTime;
+            popupVideo.play();
+        });
+
+        closeModal.addEventListener('click', () => {
+            videoModal.classList.add('hidden');
+            popupVideo.pause();
+        });
+
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.classList.add('hidden');
+                popupVideo.pause();
+            }
+        });
+    </script>
+
+    <!--  -->
+    <script>
+        document.querySelectorAll('.graduate-video-container').forEach((container, index, allContainers) => {
+            const video = container.querySelector('video');
+            const playIcon = container.querySelector('.play-icon img');
+            const muteIcon = container.querySelector('.mute-icon img');
+
+            let isPlaying = false;
+            let isMuted = true; // Başlangıçta ses kapalı
+
+            // Başlangıçta videoyu sessize al
+            video.muted = true; // Ses kapalı başlasın
+            muteIcon.src = '../statics/img/core/icons/voice-mute.png'; // Ses kapalı ikonu göster
+
+            // Video oynatma/durdurma işlevi
+            playIcon.addEventListener('click', () => {
+                if (isPlaying) {
+                    video.pause();
+                    playIcon.src = '../statics/img/core/icons/play.png'; // Play iconu geri getir
+                } else {
+                    // Diğer videoları durdur
+                    allContainers.forEach(c => {
+                        const otherVideo = c.querySelector('video');
+                        if (otherVideo !== video) {
+                            otherVideo.pause();
+                            c.querySelector('.play-icon img').src = '../statics/img/core/icons/play.png'; // Diğer videoların play ikonunu geri getir
+                        }
+                    });
+                    video.play();
+                    playIcon.src = '../statics/img/core/icons/pause.png'; // Pause iconuna geçiş yap
+                    setTimeout(() => {
+                        playIcon.parentElement.style.display = 'none'; // Play/Pause iconu gizle
+                    }, 1000);
+                }
+                isPlaying = !isPlaying;
+            });
+
+            // Ekrana çift tıklandığında durdur ve ikon tekrar çıksın
+            container.addEventListener('dblclick', () => {
+                video.pause();
+                playIcon.parentElement.style.display = 'flex'; // Play iconunu göster
+                playIcon.src = '../statics/img/core/icons/play.png'; // Play iconuna dön
+                isPlaying = false;
+            });
+
+            // Ses kontrolü
+            muteIcon.addEventListener('click', () => {
+                if (isMuted) {
+                    video.muted = false; // Sesi aç
+                    muteIcon.src = '../statics/img/core/icons/voice-play.png'; // Ses açık iconu
+                } else {
+                    video.muted = true; // Sesi kapat
+                    muteIcon.src = '../statics/img/core/icons/voice-mute.png'; // Ses kapalı iconu
+                }
+                isMuted = !isMuted;
+            });
+        });
+    </script>
+
+    <script>
+        const partnerData = [
+            {
+                name: 'Partner 1',
+                logo: '../statics/img/1.png'
+            },
+            {
+                name: 'Partner 2',
+                logo: '../statics/img/3.png'
+            },
+            {
+                name: 'Partner 3',
+                logo: '../statics/img/2.svg'
+            },
+            {
+                name: 'Partner 4',
+                logo: '../statics/img/2.svg'
+            },
+            {
+                name: 'Partner 5',
+                logo: '../statics/img/3.png'
+            },
+        ];
+
+        createPartnerElements(partnerData);
+
+        const marquee = new Marquee(".marquee-content", partnerData.length * 2);
+        marquee.duplicateContent();
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all specialization buttons
+            const buttons = document.querySelectorAll('.specialization-button');
+
+            buttons.forEach(button => {
+                // Attach click event to each button
+                button.addEventListener('click', function () {
+                    // Toggle 'selected' state
+                    this.classList.toggle('selected');
+
+                    // Toggle the background color and text color for selected state
+                    if (this.classList.contains('selected')) {
+                        this.classList.remove('bg-[#F8F9FA]', 'text-black'); // Remove default background and text color
+                        this.classList.add('bg-[#2BA6EB]', 'text-white'); // Change to selected background and text color
+                    } else {
+                        this.classList.remove('bg-[#2BA6EB]', 'text-white'); // Remove selected state colors
+                        this.classList.add('bg-[#F8F9FA]', 'text-black'); // Revert to default background and text color
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <script>
+        class PartnyorBoxAdjuster {
+            constructor(itemSelector, testBoxSelector, maxWidth = 968) {
+                this.partnyorItem = document.querySelector(itemSelector);
+                this.partnyorTestBox = document.querySelector(testBoxSelector);
+                this.maxWidth = maxWidth;
+
+                this.init();
+            }
+
+            // Initialize event listeners and adjust height on page load or resize
+            init() {
+                window.addEventListener('load', this.adjustHeight.bind(this));
+                window.addEventListener('resize', this.adjustHeight.bind(this));
+            }
+
+            // Adjust the height of the test box based on the partnyor item, only if window width is above maxWidth
+            adjustHeight() {
+                if (window.innerWidth < this.maxWidth) {
+                    this.resetHeight(); // Optionally reset the height when below the threshold
+                    return;
+                }
+
+                if (this.partnyorItem && this.partnyorTestBox) {
+                    const partnyorItemHeight = this.partnyorItem.offsetHeight;
+                    this.partnyorTestBox.style.height = `${partnyorItemHeight}px`;
+                }
+            }
+
+            // Optional: Reset the height of the test box when below the maxWidth
+            resetHeight() {
+                if (this.partnyorTestBox) {
+                    this.partnyorTestBox.style.height = ''; // Reset to default
+                }
+            }
+        }
+
+        // Example usage
+        const partnyorAdjuster = new PartnyorBoxAdjuster('.partner-form', '.parter-test-box');
+
+    </script>
+
+
+
+    <script>
+        function adjustMainHeight() {
+            const mainElement = document.querySelector('main');
+            const sections = document.querySelectorAll('main section');
+            let totalHeight = 0;
+
+            if (window.innerWidth < 968) {
+                mainElement.style.height = ''; 
+                return;
+            }
+
+            sections.forEach(section => {
+                totalHeight += section.offsetHeight;
+            });
+
+            const footerHeight = window.innerWidth >= 968 ? document.querySelector('footer').offsetHeight : 0;
+
+            const totalHeightWithVh = totalHeight + window.innerHeight + footerHeight;
+
+            mainElement.style.height = `${totalHeightWithVh}px`;
+        }
+
+        window.addEventListener('DOMContentLoaded', adjustMainHeight);
+        window.addEventListener('resize', adjustMainHeight);
+    </script>
+
+
+
+
+    <script>
+        const popups = {
+            qxwsc: {
+                message: "We are working slowly to do our best, please wait or go to the 404 page.",
+                errorUrl: '/404',
+                homeUrl: '/'
+            },
+        };
+
+        class Popup {
+            constructor() {
+                this.overlay = document.querySelector('.overlay');
+                this.overlay.onclick = () => this.close();
+
+                document.querySelectorAll('.pageNotFoundPopup').forEach(link => {
+                    link.onclick = (event) => {
+                        event.preventDefault();
+                        const popupName = link.getAttribute('data-popup');
+                        this.show(popupName);
+                    };
+                });
+            }
+
+            show(popupName) {
+                const popup = this.createPopup(popupName);
+                document.body.appendChild(popup);
+                const message = popup.querySelector('.message');
+                message.textContent = popups[popupName].message;
+
+                popup.style.display = 'block';
+                this.overlay.style.display = 'block';
+
+                popup.querySelector('.errorButton').onclick = () => this.goToUrl(popups[popupName].errorUrl);
+                popup.querySelector('.homeButton').onclick = () => this.goToUrl(popups[popupName].homeUrl);
+            }
+
+            createPopup(popupName) {
+                const popup = document.createElement('div');
+                popup.className = `popup ${popupName}`;
+                popup.innerHTML = `
+                <h2 class="text-lg font-bold mb-4">Error: Page not found!</h2>
+                <p class="message"></p>
+                <div class="mt-4 flex justify-between">
+                    <button class="text-black px-8 py-2 errorButton border border-[#CCCCCC] rounded-full">404</button>
+                    <button class="text-black px-8 py-2 homeButton border border-[#CCCCCC] rounded-full">Back</button>
+                </div>
+            `;
+                return popup;
+            }
+
+            close() {
+                const popups = document.querySelectorAll('.popup');
+                popups.forEach(popup => {
+                    popup.remove();
+                });
+                this.overlay.style.display = 'none';
+            }
+
+            goToUrl(url) {
+                window.location.href = url;
+            }
+        }
+
+        const popupComponent = new Popup();
+    </script>
+
+
+    <!-- JS/Head - Start -->
+    <script src="../statics/js/head/meta.js"></script> <!-- Meta -->
+    <script src="../statics/js/head/title.js"></script> <!-- Title -->
+
+    <!-- JS/Head - Start -->
+    <script>
+
+        // Meta Data
+        const metaConfig = {
+            description: 'Turing Academy - education, fun, innovation',
+            keywords: 'turing, academy',
+            robots: 'index, follow',
+            language: 'English',
+            'revisit-after': '1 days',
+            author: 'CC',
+            httpEquiv: {
+                'Content-Type': 'text/html; charset=utf-8'
+            }
+        };
+        // Title Data
+        const titleConfig = {
+            title: 'Turing Academy'
+        };
+
+        const metaManager = new MetaTagManager(metaConfig);
+        metaManager.applyMetaTags(); // Meta
+        new TitleManager(titleConfig); // Title
+    </script>
+
+
+    <!-- Smooth scroll -->
+    <script>
+
+
+    </script>
+
+</body>
+
+</html>

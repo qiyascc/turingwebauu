@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(var(--rotate-angle));
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(var(--rotate-angle));
+            }
+
+            100% {
+                transform: translateY(0px) rotate(var(--rotate-angle));
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+            opacity: 34%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body id="body"
+    class="bg-[#080d20] flex flex-col items-center justify-center text-white p-4 overflow-hidden h-[100vh] w-[100vw]">
+    <div class="absolute" style="top: 0; left: 0;">
+        <img src="../statics/img/core/effects/blur/header.png" alt="" srcset="">
+    </div>
+    <div class="absolute" style="bottom: 0; right: 0;">
+        <img src="../statics/img/core/effects/blur/blur-down-right.png" alt="" srcset="">
+    </div>
+    <main class="z-10 text-center mb-[15vh]">
+        <h1 class="text-5xl md:text-7xl font-bold mb-4">Oops!</h1>
+        <h2 class="text-3xl md:text-4xl font-semibold mb-6">Looks like you're lost...</h2>
+        <p class="mb-8 max-w-md mx-auto">
+            We couldn't find the page you're looking for, but great things are still
+            waiting for you. Head back to the homepage and keep exploring!
+        </p>
+        <custom-button type="url" href="/"
+            style-config="background-color: transparent; border-radius: 100px; color: white;"
+            class="border border-[#4A5567] rounded-[100px] p-[16px] pr-[24px] inter-medium text-[16px]" icon="../statics/img/core/icons/404/back.svg" position="left">
+            
+
+            Go Home
+        </custom-button>
+    </main>
+    <div class="absolute lg:bottom-[-30vh] md:bottom-[-20vh] bottom-[-10vh] left-0 right-0 flex justify-center items-end overflow-hidden select-none"
+        style="height: 80vh;">
+        <span class="text-blue-800/20 font-extrabold gradient-text lg:text-[600px] md:text-[450px] text-[250px]"
+            style="--rotate-angle: 7deg; animation: float 6s ease-in-out infinite;">
+            4
+        </span>
+        <span class="text-blue-800/20 font-extrabold gradient-text lg:text-[600px] md:text-[450px] text-[250px]"
+            style="--rotate-angle: 0deg; animation: float 6s ease-in-out infinite 0.2s;">
+            0
+        </span>
+        <span class="text-blue-800/20 font-extrabold gradient-text lg:text-[600px] md:text-[450px] text-[250px]"
+            style="--rotate-angle: -7deg; animation: float 6s ease-in-out infinite 0.4s;">
+            4
+        </span>
+    </div>
+    <script src="../statics/js/components/buttonComponent.js"></script>
+
+    <script>
+    </script>
+
+</body>
+
+</html>
